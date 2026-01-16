@@ -1,5 +1,14 @@
-import ChaiBuilderEditor from "@chaibuilder/next";
+import { ChaiWebsiteBuilder } from "@chaibuilder/next";
 
 export default function Home() {
-  return <ChaiBuilderEditor flags={{ dragAndDrop: true, designTokens: true }} />;
+  return (
+    <ChaiWebsiteBuilder
+      currentUser={{
+        id: "id",
+        email: "email",
+        name: "name",
+      }}
+      flags={{ dragAndDrop: true, designTokens: true }}
+    />
+  );
 }
