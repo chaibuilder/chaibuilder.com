@@ -10,7 +10,10 @@ importers:
     dependencies:
       '@chaibuilder/next':
         specifier: 4.0.0-beta.3
-        version: 4.0.0-beta.3(@babel/core@7.28.6)(@babel/template@7.28.6)(@emotion/is-prop-valid@1.4.0)(@opentelemetry/api@1.9.0)(@tiptap/core@2.27.2(@tiptap/pm@2.27.2))(@types/mdast@4.0.4)(@types/node@20.19.30)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(micromark-util-types@2.0.2)(micromark@4.0.2)(next@16.1.2(@babel/core@7.28.6)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react-konva@19.2.1(@types/react@19.2.8)(konva@9.3.6)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)(styled-components@6.3.8(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(tailwindcss@4.1.18)(typescript@5.9.3)(zod@4.3.5)
+        version: 4.0.0-beta.3(@babel/core@7.28.6)(@babel/template@7.28.6)(@emotion/is-prop-valid@1.4.0)(@opentelemetry/api@1.9.0)(@supabase/supabase-js@2.90.1)(@tiptap/core@2.27.2(@tiptap/pm@2.27.2))(@types/mdast@4.0.4)(@types/node@20.19.30)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(micromark-util-types@2.0.2)(micromark@4.0.2)(next@16.1.2(@babel/core@7.28.6)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react-konva@19.2.1(@types/react@19.2.8)(konva@9.3.6)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)(styled-components@6.3.8(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(tailwindcss@4.1.18)(typescript@5.9.3)(zod@4.3.5)
+      '@supabase/supabase-js':
+        specifier: ^2.90.1
+        version: 2.90.1
       concurrently:
         specifier: ^9.2.1
         version: 9.2.1
@@ -1262,6 +1265,30 @@ packages:
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
 
+  '@supabase/auth-js@2.90.1':
+    resolution: {integrity: sha512-vxb66dgo6h3yyPbR06735Ps+dK3hj0JwS8w9fdQPVZQmocSTlKUW5MfxSy99mN0XqCCuLMQ3jCEiIIUU23e9ng==}
+    engines: {node: '>=20.0.0'}
+
+  '@supabase/functions-js@2.90.1':
+    resolution: {integrity: sha512-x9mV9dF1Lam9qL3zlpP6mSM5C9iqMPtF5B/tU1Jj/F0ufX5mjDf9ghVBaErVxmrQJRL4+iMKWKY2GnODkpS8tw==}
+    engines: {node: '>=20.0.0'}
+
+  '@supabase/postgrest-js@2.90.1':
+    resolution: {integrity: sha512-jh6vqzaYzoFn3raaC0hcFt9h+Bt+uxNRBSdc7PfToQeRGk7PDPoweHsbdiPWREtDVTGKfu+PyPW9e2jbK+BCgQ==}
+    engines: {node: '>=20.0.0'}
+
+  '@supabase/realtime-js@2.90.1':
+    resolution: {integrity: sha512-PWbnEMkcQRuor8jhObp4+Snufkq8C6fBp+MchVp2qBPY1NXk/c3Iv3YyiFYVzo0Dzuw4nAlT4+ahuPggy4r32w==}
+    engines: {node: '>=20.0.0'}
+
+  '@supabase/storage-js@2.90.1':
+    resolution: {integrity: sha512-GHY+Ps/K/RBfRj7kwx+iVf2HIdqOS43rM2iDOIDpapyUnGA9CCBFzFV/XvfzznGykd//z2dkGZhlZZprsVFqGg==}
+    engines: {node: '>=20.0.0'}
+
+  '@supabase/supabase-js@2.90.1':
+    resolution: {integrity: sha512-U8KaKGLUgTIFHtwEW1dgw1gK7XrdpvvYo7nzzqPx721GqPe8WZbAiLh/hmyKLGBYQ/mmQNr20vU9tWSDZpii3w==}
+    engines: {node: '>=20.0.0'}
+
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
 
@@ -1709,6 +1736,9 @@ packages:
   '@types/node@20.19.30':
     resolution: {integrity: sha512-WJtwWJu7UdlvzEAUm484QNg5eAoq5QR08KDNx7g45Usrs2NtOPiX8ugDqmKdXkyL03rBqU5dYNYVQetEpBHq2g==}
 
+  '@types/phoenix@1.6.7':
+    resolution: {integrity: sha512-oN9ive//QSBkf19rfDv45M7eZPi0eEXylht2OLEXicu5b4KoQ1OzXIw+xDSGWxSxe1JmepRR/ZH283vsu518/Q==}
+
   '@types/react-dom@19.2.3':
     resolution: {integrity: sha512-jp2L/eY6fn+KgVVQAOqYItbF0VY/YApe5Mz2F0aykSO8gx31bYCZyvSeYxCHKvzHG5eZjc+zyaS5BrBWya2+kQ==}
     peerDependencies:
@@ -1741,6 +1771,9 @@ packages:
 
   '@types/use-sync-external-store@0.0.6':
     resolution: {integrity: sha512-zFDAD+tlpf2r4asuHEj0XH6pY6i0g5NeAHPn+15wk3BV6JA69eERFXC1gyGThDkVa1zCyKr5jox1+2LbV/AMLg==}
+
+  '@types/ws@8.18.1':
+    resolution: {integrity: sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==}
 
   '@typescript-eslint/eslint-plugin@8.53.0':
     resolution: {integrity: sha512-eEXsVvLPu8Z4PkFibtuFJLJOTAV/nPdgtSjkGoPpddpFk3/ym2oy97jynY6ic2m6+nc5M8SE1e9v/mHKsulcJg==}
@@ -3066,6 +3099,10 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
+
+  iceberg-js@0.8.1:
+    resolution: {integrity: sha512-1dhVQZXhcHje7798IVM+xoo/1ZdVfzOMIc8/rgVSijRK38EDqOJoGula9N/8ZI5RD8QTxNQtK/Gozpr+qUqRRA==}
+    engines: {node: '>=20.0.0'}
 
   iconv-lite@0.6.3:
     resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
@@ -4884,6 +4921,18 @@ packages:
     resolution: {integrity: sha512-YnlPC6JqnZl6aO4uRc+dx5PHguiR9S6WeoLtpxNT9wIG+BDya7ZNE1q7KOjVgaA73hKhKLpVPgJ5QA9THQ5BRg==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
+  ws@8.19.0:
+    resolution: {integrity: sha512-blAT2mjOEIi0ZzruJfIhb3nps74PRWTCz1IjglWEEpQl5XS/UNama6u2/rjFkDDouqr4L67ry+1aGIALViWjDg==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+
   y18n@5.0.8:
     resolution: {integrity: sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==}
     engines: {node: '>=10'}
@@ -5050,9 +5099,9 @@ snapshots:
 
   '@braintree/sanitize-url@7.1.1': {}
 
-  '@chaibuilder/next@4.0.0-beta.3(@babel/core@7.28.6)(@babel/template@7.28.6)(@emotion/is-prop-valid@1.4.0)(@opentelemetry/api@1.9.0)(@tiptap/core@2.27.2(@tiptap/pm@2.27.2))(@types/mdast@4.0.4)(@types/node@20.19.30)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(micromark-util-types@2.0.2)(micromark@4.0.2)(next@16.1.2(@babel/core@7.28.6)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react-konva@19.2.1(@types/react@19.2.8)(konva@9.3.6)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)(styled-components@6.3.8(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(tailwindcss@4.1.18)(typescript@5.9.3)(zod@4.3.5)':
+  '@chaibuilder/next@4.0.0-beta.3(@babel/core@7.28.6)(@babel/template@7.28.6)(@emotion/is-prop-valid@1.4.0)(@opentelemetry/api@1.9.0)(@supabase/supabase-js@2.90.1)(@tiptap/core@2.27.2(@tiptap/pm@2.27.2))(@types/mdast@4.0.4)(@types/node@20.19.30)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(micromark-util-types@2.0.2)(micromark@4.0.2)(next@16.1.2(@babel/core@7.28.6)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react-konva@19.2.1(@types/react@19.2.8)(konva@9.3.6)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)(styled-components@6.3.8(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(tailwindcss@4.1.18)(typescript@5.9.3)(zod@4.3.5)':
     dependencies:
-      '@chaibuilder/sdk': 4.0.0-beta.3(@babel/core@7.28.6)(@babel/template@7.28.6)(@emotion/is-prop-valid@1.4.0)(@tiptap/core@2.27.2(@tiptap/pm@2.27.2))(@types/node@20.19.30)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(ai@6.0.38(zod@4.3.5))(drizzle-orm@0.45.1(@opentelemetry/api@1.9.0)(postgres@3.4.8))(next@16.1.2(@babel/core@7.28.6)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(postgres@3.4.8)(react-dom@19.2.3(react@19.2.3))(react-konva@19.2.1(@types/react@19.2.8)(konva@9.3.6)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)(sharp@0.34.5)(streamdown@1.6.11(@types/mdast@4.0.4)(micromark-util-types@2.0.2)(micromark@4.0.2)(react@19.2.3))(styled-components@6.3.8(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(tailwindcss@4.1.18)(typescript@5.9.3)
+      '@chaibuilder/sdk': 4.0.0-beta.3(@babel/core@7.28.6)(@babel/template@7.28.6)(@emotion/is-prop-valid@1.4.0)(@supabase/supabase-js@2.90.1)(@tiptap/core@2.27.2(@tiptap/pm@2.27.2))(@types/node@20.19.30)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(ai@6.0.38(zod@4.3.5))(drizzle-orm@0.45.1(@opentelemetry/api@1.9.0)(postgres@3.4.8))(next@16.1.2(@babel/core@7.28.6)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(postgres@3.4.8)(react-dom@19.2.3(react@19.2.3))(react-konva@19.2.1(@types/react@19.2.8)(konva@9.3.6)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)(sharp@0.34.5)(streamdown@1.6.11(@types/mdast@4.0.4)(micromark-util-types@2.0.2)(micromark@4.0.2)(react@19.2.3))(styled-components@6.3.8(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(tailwindcss@4.1.18)(typescript@5.9.3)
       ai: 6.0.38(zod@4.3.5)
       concurrently: 9.2.1
       drizzle-orm: 0.45.1(@opentelemetry/api@1.9.0)(postgres@3.4.8)
@@ -5114,7 +5163,7 @@ snapshots:
       - yaml
       - zod
 
-  '@chaibuilder/sdk@4.0.0-beta.3(@babel/core@7.28.6)(@babel/template@7.28.6)(@emotion/is-prop-valid@1.4.0)(@tiptap/core@2.27.2(@tiptap/pm@2.27.2))(@types/node@20.19.30)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(ai@6.0.38(zod@4.3.5))(drizzle-orm@0.45.1(@opentelemetry/api@1.9.0)(postgres@3.4.8))(next@16.1.2(@babel/core@7.28.6)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(postgres@3.4.8)(react-dom@19.2.3(react@19.2.3))(react-konva@19.2.1(@types/react@19.2.8)(konva@9.3.6)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)(sharp@0.34.5)(streamdown@1.6.11(@types/mdast@4.0.4)(micromark-util-types@2.0.2)(micromark@4.0.2)(react@19.2.3))(styled-components@6.3.8(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(tailwindcss@4.1.18)(typescript@5.9.3)':
+  '@chaibuilder/sdk@4.0.0-beta.3(@babel/core@7.28.6)(@babel/template@7.28.6)(@emotion/is-prop-valid@1.4.0)(@supabase/supabase-js@2.90.1)(@tiptap/core@2.27.2(@tiptap/pm@2.27.2))(@types/node@20.19.30)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(ai@6.0.38(zod@4.3.5))(drizzle-orm@0.45.1(@opentelemetry/api@1.9.0)(postgres@3.4.8))(next@16.1.2(@babel/core@7.28.6)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(postgres@3.4.8)(react-dom@19.2.3(react@19.2.3))(react-konva@19.2.1(@types/react@19.2.8)(konva@9.3.6)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)(sharp@0.34.5)(streamdown@1.6.11(@types/mdast@4.0.4)(micromark-util-types@2.0.2)(micromark@4.0.2)(react@19.2.3))(styled-components@6.3.8(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(tailwindcss@4.1.18)(typescript@5.9.3)':
     dependencies:
       '@floating-ui/dom': 1.7.4
       '@floating-ui/react-dom': 2.1.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -5208,6 +5257,7 @@ snapshots:
       use-stick-to-bottom: 1.1.1(react@19.2.3)
       zod: 4.3.5
     optionalDependencies:
+      '@supabase/supabase-js': 2.90.1
       '@types/react': 19.2.8
       '@types/react-dom': 19.2.3(@types/react@19.2.8)
       ai: 6.0.38(zod@4.3.5)
@@ -6309,6 +6359,44 @@ snapshots:
 
   '@standard-schema/spec@1.1.0': {}
 
+  '@supabase/auth-js@2.90.1':
+    dependencies:
+      tslib: 2.8.1
+
+  '@supabase/functions-js@2.90.1':
+    dependencies:
+      tslib: 2.8.1
+
+  '@supabase/postgrest-js@2.90.1':
+    dependencies:
+      tslib: 2.8.1
+
+  '@supabase/realtime-js@2.90.1':
+    dependencies:
+      '@types/phoenix': 1.6.7
+      '@types/ws': 8.18.1
+      tslib: 2.8.1
+      ws: 8.19.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
+  '@supabase/storage-js@2.90.1':
+    dependencies:
+      iceberg-js: 0.8.1
+      tslib: 2.8.1
+
+  '@supabase/supabase-js@2.90.1':
+    dependencies:
+      '@supabase/auth-js': 2.90.1
+      '@supabase/functions-js': 2.90.1
+      '@supabase/postgrest-js': 2.90.1
+      '@supabase/realtime-js': 2.90.1
+      '@supabase/storage-js': 2.90.1
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
   '@swc/helpers@0.5.15':
     dependencies:
       tslib: 2.8.1
@@ -6776,6 +6864,8 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
+  '@types/phoenix@1.6.7': {}
+
   '@types/react-dom@19.2.3(@types/react@19.2.8)':
     dependencies:
       '@types/react': 19.2.8
@@ -6802,6 +6892,10 @@ snapshots:
   '@types/unist@3.0.3': {}
 
   '@types/use-sync-external-store@0.0.6': {}
+
+  '@types/ws@8.18.1':
+    dependencies:
+      '@types/node': 20.19.30
 
   '@typescript-eslint/eslint-plugin@8.53.0(@typescript-eslint/parser@8.53.0(eslint@9.39.2(jiti@1.21.7))(typescript@5.9.3))(eslint@9.39.2(jiti@1.21.7))(typescript@5.9.3)':
     dependencies:
@@ -8287,6 +8381,8 @@ snapshots:
       '@babel/runtime': 7.28.6
     optionalDependencies:
       typescript: 5.9.3
+
+  iceberg-js@0.8.1: {}
 
   iconv-lite@0.6.3:
     dependencies:
@@ -10572,6 +10668,8 @@ snapshots:
     dependencies:
       imurmurhash: 0.1.4
       signal-exit: 4.1.0
+
+  ws@8.19.0: {}
 
   y18n@5.0.8: {}
 

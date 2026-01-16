@@ -1,0 +1,6 @@
+import { builderApiHandler } from "@chaibuilder/next/server";
+
+const apiKey = process.env.CHAIBUILDER_API_KEY!;
+const handler: any = builderApiHandler(apiKey);
+
+export { handler as POST };
