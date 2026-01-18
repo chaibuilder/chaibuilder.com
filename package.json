@@ -11,13 +11,9 @@
   "dependencies": {
     "@chaibuilder/next": "4.0.0-beta.3",
     "@supabase/supabase-js": "^2.90.1",
-    "concurrently": "^9.2.1",
-    "jotai": "2.14.0",
     "next": "16.1.2",
     "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "supabase": "^2.72.7",
-    "tailwindcss-animate": "^1.0.7"
+    "react-dom": "19.2.3"
   },
   "devDependencies": {
     "@types/node": "^20",
