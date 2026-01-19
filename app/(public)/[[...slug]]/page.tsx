@@ -1,11 +1,11 @@
-import { ChaiPageProps } from "@chaibuilder/next/runtime";
-import { loadWebBlocks } from "@chaibuilder/next/web-blocks";
 import {
   ChaiBuilder,
   ChaiPageStyles,
   PreviewBanner,
   RenderChaiBlocks,
 } from "@chaibuilder/next/render";
+import { ChaiPageProps } from "@chaibuilder/next/runtime";
+import { loadWebBlocks } from "@chaibuilder/next/web-blocks";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
@@ -20,7 +20,7 @@ export const generateMetadata = async (props: {
   const slug = nextParams.slug ? `/${nextParams.slug.join("/")}` : "/";
 
   const { isEnabled } = await draftMode();
-  ChaiBuilder.init(process.env.CHAIBUILDER_API_KEY!, isEnabled);
+  ChaiBuilder.init(process.env.CHAIBUILDER_APP_KEY!, isEnabled);
   return await ChaiBuilder.getPageSeoData(slug);
 };
 
@@ -33,14 +33,9 @@ export default async function Page({
   const slug = nextParams.slug ? `/${nextParams.slug.join("/")}` : "/";
 
   const { isEnabled } = await draftMode();
-  ChaiBuilder.init(process.env.CHAIBUILDER_API_KEY!, isEnabled);
-  let page = null;
-  try {
-    page = await ChaiBuilder.getPage(slug);
-    if ("error" in page) {
-      return notFound();
-    }
-  } catch (err) {
+  ChaiBuilder.init(process.env.CHAIBUILDER_APP_KEY!, isEnabled);
+  const page = await ChaiBuilder.getPage(slug);
+  if ("error" in page && page.error === "NOT_FOUND") {
     return notFound();
   }
 
@@ -52,7 +47,7 @@ export default async function Page({
     pageLang: page.lang,
   };
   return (
-    <>
+    <html className={`smooth-scroll`} lang={page.lang}>
       <head>
         <ChaiPageStyles page={page} />
       </head>
@@ -60,6 +55,6 @@ export default async function Page({
         <PreviewBanner slug={slug} show={isEnabled} />
         <RenderChaiBlocks page={page} pageProps={pageProps} />
       </body>
-    </>
+    </html>
   );
 }
