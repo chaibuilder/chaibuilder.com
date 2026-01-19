@@ -1,3 +1,4 @@
+import { getSupabaseClient } from "@/app/supabase-client";
 import {
   ChaiActionsRegistry,
   initChaiBuilderActionHandler,
@@ -7,19 +8,18 @@ import {
   SupabaseStorageActions,
 } from "@chaibuilder/next/actions/supabase";
 import { NextRequest, NextResponse } from "next/server";
-import { getSupabaseClient } from "@/app/supabase-client";
 const supabase = getSupabaseClient();
 ChaiActionsRegistry.registerActions(SupabaseAuthActions(supabase));
 ChaiActionsRegistry.registerActions(SupabaseStorageActions(supabase));
 
 export async function POST(req: NextRequest) {
-  const apiKey = process.env.CHAIBUILDER_API_KEY;
+  const apiKey = process.env.CHAIBUILDER_APP_KEY;
 
   if (!apiKey) {
-    console.error("CHAIBUILDER_API_KEY environment variable is not set.");
+    console.error("CHAIBUILDER_APP_KEY environment variable is not set.");
     return NextResponse.json(
-      { error: "Server misconfiguration: CHAIBUILDER_API_KEY is not set" },
-      { status: 500 }
+      { error: "Server misconfiguration: CHAIBUILDER_APP_KEY is not set" },
+      { status: 500 },
     );
   }
   try {
@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
     if (supabaseUser.error) {
       return NextResponse.json(
         { error: "Invalid or expired token" },
-        { status: 401 }
+        { status: 401 },
       );
     }
     authTokenOrUserId = supabaseUser.data.user?.id || "";
@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
       if (!result?.textStream) {
         return NextResponse.json(
           { error: "No streaming response available" },
-          { status: 500 }
+          { status: 500 },
         );
       }
 
@@ -91,7 +91,7 @@ export async function POST(req: NextRequest) {
     });
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
