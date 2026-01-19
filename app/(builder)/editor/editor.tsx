@@ -3,13 +3,15 @@
 import { ChaiWebsiteBuilder } from "@chaibuilder/next";
 import { useCallback, useEffect, useState } from "react";
 import { LoginScreen } from "./login";
+import { getSupabaseClient } from "@/app/supabase-client";
+
 
 type LoggedInUser = {
   id: string;
   email: string;
   name: string;
   avatar?: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 };
 
 const supabase = getSupabaseClient();

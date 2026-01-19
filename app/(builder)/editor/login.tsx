@@ -1,6 +1,6 @@
 "use client";
 
-import { getSupabaseClient } from "@chaibuilder/next";
+import { getSupabaseClient } from "@/app/supabase-client";
 import { useState } from "react";
 
 const supabase = getSupabaseClient();

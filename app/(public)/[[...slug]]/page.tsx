@@ -1,6 +1,7 @@
-import ChaiBuilder from "@chaibuilder/next/render";
+import { ChaiPageProps } from "@chaibuilder/next/runtime";
 import { loadWebBlocks } from "@chaibuilder/next/web-blocks";
 import {
+  ChaiBuilder,
   ChaiPageStyles,
   PreviewBanner,
   RenderChaiBlocks,
