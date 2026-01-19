@@ -5,12 +5,14 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
 
   const host = request.headers.get("host");
-  const origin = process.env.NODE_ENV === "development" ? `http://${host}` : `https://${host}`;
+  const origin =
+    process.env.NODE_ENV === "development"
+      ? `http://${host}`
+      : `https://${host}`;
 
   const code = searchParams.get("code");
   const type = searchParams.get("type") ?? "";
   const next = "/editor";
-  console.log("searchParams", request.url, code, type, next);
 
   if (code) {
     const supabase = await getSupabaseClient();
