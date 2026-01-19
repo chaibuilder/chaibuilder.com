@@ -4,7 +4,6 @@ import containerQueries from "@tailwindcss/container-queries";
 import forms from "@tailwindcss/forms";
 import typography from "@tailwindcss/typography";
 import plugin from "tailwindcss/plugin";
-import tailwindcssAnimate from "tailwindcss-animate";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -46,6 +45,5 @@ module.exports = {
     containerQueries,
     forms,
     typography,
-    tailwindcssAnimate,
   ],
 };

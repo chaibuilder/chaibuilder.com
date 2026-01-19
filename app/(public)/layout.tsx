@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./public.css";
 
+
 export const metadata: Metadata = {
   title: "Chai Builder",
   description: "Chai Builder",

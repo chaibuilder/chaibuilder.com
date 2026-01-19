@@ -5,7 +5,7 @@ import {
   ChaiPageStyles,
   PreviewBanner,
   RenderChaiBlocks,
-} from "@chaibuilder/next/web-blocks/rsc";
+} from "@chaibuilder/next/render";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
