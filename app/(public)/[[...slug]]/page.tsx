@@ -34,11 +34,12 @@ export default async function Page({
 
   const { isEnabled } = await draftMode();
   ChaiBuilder.init(process.env.CHAIBUILDER_APP_KEY!, isEnabled);
-  const page = await ChaiBuilder.getPage(slug);
-  if ("error" in page && page.error === "NOT_FOUND") {
+  const response = await ChaiBuilder.getPage(slug);
+  if ("error" in response && response.error === "NOT_FOUND") {
     return notFound();
   }
 
+  const page = response as any;
   //NOTE: pageProps are received in your dataProvider functions for block and page
   const pageProps: ChaiPageProps = {
     slug,

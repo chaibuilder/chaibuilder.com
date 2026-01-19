@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@chaibuilder/next':
-        specifier: 4.0.0-beta.7
-        version: 4.0.0-beta.7(@babel/core@7.28.6)(@babel/template@7.28.6)(@emotion/is-prop-valid@1.4.0)(@opentelemetry/api@1.9.0)(@supabase/supabase-js@2.90.1)(@tiptap/core@2.27.2(@tiptap/pm@2.27.2))(@types/mdast@4.0.4)(@types/node@20.19.30)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(micromark-util-types@2.0.2)(micromark@4.0.2)(next@16.1.2(@babel/core@7.28.6)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react-konva@19.2.1(@types/react@19.2.8)(konva@9.3.6)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)(styled-components@6.3.8(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(tailwindcss@3.4.19)(typescript@5.9.3)(zod@4.3.5)
+        specifier: 4.0.0-beta.8
+        version: 4.0.0-beta.8(@babel/core@7.28.6)(@babel/template@7.28.6)(@emotion/is-prop-valid@1.4.0)(@opentelemetry/api@1.9.0)(@supabase/supabase-js@2.90.1)(@tiptap/core@2.27.2(@tiptap/pm@2.27.2))(@types/mdast@4.0.4)(@types/node@20.19.30)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(micromark-util-types@2.0.2)(micromark@4.0.2)(next@16.1.2(@babel/core@7.28.6)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react-konva@19.2.1(@types/react@19.2.8)(konva@9.3.6)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)(styled-components@6.3.8(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(tailwindcss@3.4.19)(typescript@5.9.3)(zod@4.3.5)
       '@supabase/supabase-js':
         specifier: ^2.90.1
         version: 2.90.1
@@ -166,8 +166,8 @@ packages:
   '@braintree/sanitize-url@7.1.1':
     resolution: {integrity: sha512-i1L7noDNxtFyL5DmZafWy1wRVhGehQmzZaz1HiN5e7iylJMSZR7ekOV7NsIqa5qBldlLrsKv4HbgFUVlQrz8Mw==}
 
-  '@chaibuilder/next@4.0.0-beta.7':
-    resolution: {integrity: sha512-/Lxzdn/HWBadKq9zuRd/9oIadnHNoM8TU6Eb4BJWt5HDri2HO6CkMhcDVZRTGC/kXLr+XYScPXavixdhHHjQ7A==}
+  '@chaibuilder/next@4.0.0-beta.8':
+    resolution: {integrity: sha512-3+F2FqKqzxczbEWPe/0SmKXEQ+lFfbZSvTv96A/+2dpsR+GztnbLgfkQhvw4TJuWZr0gI64Alxn8lWUEBmDUMQ==}
     hasBin: true
     peerDependencies:
       next: ^16.1.1
@@ -4841,9 +4841,13 @@ snapshots:
 
   '@braintree/sanitize-url@7.1.1': {}
 
-  '@chaibuilder/next@4.0.0-beta.7(@babel/core@7.28.6)(@babel/template@7.28.6)(@emotion/is-prop-valid@1.4.0)(@opentelemetry/api@1.9.0)(@supabase/supabase-js@2.90.1)(@tiptap/core@2.27.2(@tiptap/pm@2.27.2))(@types/mdast@4.0.4)(@types/node@20.19.30)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(micromark-util-types@2.0.2)(micromark@4.0.2)(next@16.1.2(@babel/core@7.28.6)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react-konva@19.2.1(@types/react@19.2.8)(konva@9.3.6)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)(styled-components@6.3.8(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(tailwindcss@3.4.19)(typescript@5.9.3)(zod@4.3.5)':
+  '@chaibuilder/next@4.0.0-beta.8(@babel/core@7.28.6)(@babel/template@7.28.6)(@emotion/is-prop-valid@1.4.0)(@opentelemetry/api@1.9.0)(@supabase/supabase-js@2.90.1)(@tiptap/core@2.27.2(@tiptap/pm@2.27.2))(@types/mdast@4.0.4)(@types/node@20.19.30)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(micromark-util-types@2.0.2)(micromark@4.0.2)(next@16.1.2(@babel/core@7.28.6)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react-konva@19.2.1(@types/react@19.2.8)(konva@9.3.6)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)(styled-components@6.3.8(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(tailwindcss@3.4.19)(typescript@5.9.3)(zod@4.3.5)':
     dependencies:
       '@chaibuilder/sdk': 4.0.0-beta.6(@babel/core@7.28.6)(@babel/template@7.28.6)(@emotion/is-prop-valid@1.4.0)(@supabase/supabase-js@2.90.1)(@tiptap/core@2.27.2(@tiptap/pm@2.27.2))(@types/node@20.19.30)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(ai@6.0.38(zod@4.3.5))(drizzle-orm@0.45.1(@opentelemetry/api@1.9.0)(postgres@3.4.8))(next@16.1.2(@babel/core@7.28.6)(@opentelemetry/api@1.9.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(postgres@3.4.8)(react-dom@19.2.3(react@19.2.3))(react-konva@19.2.1(@types/react@19.2.8)(konva@9.3.6)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)(sharp@0.34.5)(streamdown@1.6.11(@types/mdast@4.0.4)(micromark-util-types@2.0.2)(micromark@4.0.2)(react@19.2.3))(styled-components@6.3.8(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(tailwindcss@3.4.19)(typescript@5.9.3)
+      '@tailwindcss/aspect-ratio': 0.4.2(tailwindcss@3.4.19)
+      '@tailwindcss/container-queries': 0.1.1(tailwindcss@3.4.19)
+      '@tailwindcss/forms': 0.5.11(tailwindcss@3.4.19)
+      '@tailwindcss/typography': 0.5.19(tailwindcss@3.4.19)
       ai: 6.0.38(zod@4.3.5)
       concurrently: 9.2.1
       drizzle-orm: 0.45.1(@opentelemetry/api@1.9.0)(postgres@3.4.8)
