@@ -5,8 +5,12 @@ import { useState } from "react";
 
 const supabase = getSupabaseClient();
 
+type LoginView = "login" | "forgot_password";
+
 export const LoginScreen = () => {
+  const [view, setView] = useState<LoginView>("login");
   const [responseError, setResponseError] = useState("");
+  const [responseSuccess, setResponseSuccess] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,6 +18,7 @@ export const LoginScreen = () => {
   const handleEmailLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setResponseError("");
+    setResponseSuccess("");
     setIsLoading(true);
 
     try {
@@ -25,6 +30,32 @@ export const LoginScreen = () => {
       if (error) {
         throw new Error(error.message);
       }
+    } catch (error) {
+      setResponseError(
+        error instanceof Error && error.message
+          ? error.message
+          : "Something went wrong"
+      );
+      setIsLoading(false);
+    }
+  };
+
+  const handleResetPassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setResponseError("");
+    setResponseSuccess("");
+    setIsLoading(true);
+
+    try {
+      const { error } = await supabase?.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/auth/update-password`,
+      });
+
+      if (error) {
+        throw new Error(error.message);
+      }
+      setResponseSuccess("Check your email for the password reset link");
+      setIsLoading(false);
     } catch (error) {
       setResponseError(
         error instanceof Error && error.message
@@ -65,10 +96,12 @@ export const LoginScreen = () => {
       <div className="w-full max-w-md space-y-6 rounded-lg bg-white p-8 shadow-lg">
         <div className="text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900">
-            Sign in to your account
+            {view === "login" ? "Sign in to your account" : "Reset password"}
           </h2>
           <p className="mt-2 text-sm text-gray-600">
-            Enter your email and password, or use Google to sign in
+            {view === "login"
+              ? "Enter your email and password to sign in"
+              : "Enter your email to receive reset instructions"}
           </p>
         </div>
 
@@ -78,56 +111,121 @@ export const LoginScreen = () => {
           </div>
         )}
 
-        <form className="space-y-6" onSubmit={handleEmailLogin}>
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium leading-6 text-gray-900">
-              Email address
-            </label>
-            <div className="mt-2">
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-              />
-            </div>
+        {responseSuccess && (
+          <div className="rounded-md bg-green-50 p-3 text-sm text-green-800">
+            {responseSuccess}
           </div>
+        )}
 
-          <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium leading-6 text-gray-900">
-              Password
-            </label>
-            <div className="mt-2">
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-              />
+        {view === "login" ? (
+          <form className="space-y-6" onSubmit={handleEmailLogin}>
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium leading-6 text-gray-900">
+                Email address
+              </label>
+              <div className="mt-2">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                />
+              </div>
             </div>
-          </div>
 
-          <div>
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:opacity-50">
-              {isLoading ? "Signing in..." : "Sign in"}
-            </button>
-          </div>
-        </form>
+            <div>
+              <div className="flex items-center justify-between">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium leading-6 text-gray-900">
+                  Password
+                </label>
+                <div className="text-sm">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setView("forgot_password");
+                      setResponseError("");
+                      setResponseSuccess("");
+                    }}
+                    className="font-semibold text-blue-600 hover:text-blue-500">
+                    Forgot password?
+                  </button>
+                </div>
+              </div>
+              <div className="mt-2">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:opacity-50">
+                {isLoading ? "Signing in..." : "Sign in"}
+              </button>
+            </div>
+          </form>
+        ) : (
+          <form className="space-y-6" onSubmit={handleResetPassword}>
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium leading-6 text-gray-900">
+                Email address
+              </label>
+              <div className="mt-2">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:opacity-50">
+                {isLoading ? "Sending..." : "Send reset instructions"}
+              </button>
+            </div>
+            <div className="text-center text-sm">
+              <button
+                type="button"
+                onClick={() => {
+                  setView("login");
+                  setResponseError("");
+                  setResponseSuccess("");
+                }}
+                className="font-semibold text-blue-600 hover:text-blue-500">
+                Back to sign in
+              </button>
+            </div>
+          </form>
+        )}
 
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
