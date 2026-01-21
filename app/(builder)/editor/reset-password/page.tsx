@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { getSupabaseClient } from "@/app/supabase-client";
 
 export default function ResetPasswordPage() {
   const [password, setPassword] = useState("");
@@ -9,20 +10,7 @@ export default function ResetPasswordPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
-  const [hasValidToken, setHasValidToken] = useState<boolean | null>(null);
   const router = useRouter();
-
-  useEffect(() => {
-    const hash = window.location.hash;
-    if (hash && hash.includes("access_token")) {
-      setTimeout(() => setHasValidToken(true), 100);
-    } else {
-      setTimeout(() => {
-        setHasValidToken(false);
-        setError("Invalid or expired reset link");
-      }, 100);
-    }
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,35 +31,15 @@ export default function ResetPasswordPage() {
     }
 
     try {
-      // Extract tokens from URL hash
-      const hash = window.location.hash.substring(1);
-      const params = new URLSearchParams(hash);
-      const accessToken = params.get("access_token");
-      const refreshToken = params.get("refresh_token");
+      const supabase = getSupabaseClient();
 
-      if (!accessToken) {
-        setError("Invalid reset link");
-        setLoading(false);
-        return;
-      }
-
-      // Call API to verify token and update password
-      const response = await fetch("/api/auth/reset", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          access_token: accessToken,
-          refresh_token: refreshToken,
-          password: password,
-        }),
+      // Update the user's password
+      const { error: updateError } = await supabase.auth.updateUser({
+        password: password,
       });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(data.error || "Failed to update password");
+      if (updateError) {
+        setError(updateError.message || "Failed to update password");
         setLoading(false);
         return;
       }
@@ -82,9 +50,10 @@ export default function ResetPasswordPage() {
       setTimeout(() => {
         router.push("/editor");
       }, 2000);
-    } catch {
+    } catch (err) {
       setError("An unexpected error occurred");
       setLoading(false);
+      console.warn("Error updating password:", err);
     }
   };
 
@@ -113,73 +82,6 @@ export default function ResetPasswordPage() {
             </h2>
             <p className="mt-2 text-sm text-gray-600">
               Redirecting you to the editor...
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (hasValidToken === null) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8 text-center">
-          <div className="flex items-center justify-center">
-            <svg
-              className="animate-spin h-8 w-8 text-indigo-600"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              ></circle>
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-              ></path>
-            </svg>
-          </div>
-          <p className="mt-4 text-sm text-gray-600">
-            Validating your reset link...
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!hasValidToken) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8">
-          <div className="text-center">
-            <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
-              <svg
-                className="h-6 w-6 text-red-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </div>
-            <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-              Invalid Reset Link
-            </h2>
-            <p className="mt-2 text-sm text-gray-600">
-              This password reset link is invalid or has expired. Please request
-              a new one.
             </p>
           </div>
         </div>
