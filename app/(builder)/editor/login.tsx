@@ -68,7 +68,7 @@ export const LoginScreen = () => {
             Sign in to your account
           </h2>
           <p className="mt-2 text-sm text-gray-600">
-            Enter your email and password to sign in
+            Enter your email and password, or use Google to sign in
           </p>
         </div>
 
