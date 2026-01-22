@@ -18,8 +18,8 @@ export async function GET(request: Request) {
     const supabase = await getSupabaseClient();
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
-      if (type === "reset") {
-        return NextResponse.redirect(`${origin}/reset-password`);
+      if (type === "recovery") {
+        return NextResponse.redirect(`${origin}/editor/reset-password`);
       }
       return NextResponse.redirect(`${origin}${next}`);
     }
