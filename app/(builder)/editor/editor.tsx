@@ -1,10 +1,12 @@
 "use client";
 
+import { getSupabaseClient } from "@/app/supabase-client";
+import { registerCustomBlocks } from "@/blocks";
 import { ChaiWebsiteBuilder } from "@chaibuilder/next";
 import { useCallback, useEffect, useState } from "react";
 import { LoginScreen } from "./login";
-import { getSupabaseClient } from "@/app/supabase-client";
 
+registerCustomBlocks();
 
 type LoggedInUser = {
   id: string;
@@ -83,11 +85,11 @@ export default function Editor() {
 
   const getPreviewUrl = useCallback(
     (slug: string) => `/api/preview?slug=${slug}`,
-    []
+    [],
   );
   const getLiveUrl = useCallback(
     (slug: string) => `/api/preview?disable=true&slug=${slug}`,
-    []
+    [],
   );
 
   if (isLoggedIn === null) {
