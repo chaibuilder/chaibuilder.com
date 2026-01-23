@@ -4,7 +4,7 @@ import {
   PreviewBanner,
   RenderChaiBlocks,
 } from "@chaibuilder/next/render";
-import { ChaiPageProps } from "@chaibuilder/next/runtime";
+import { ChaiPageProps } from "@chaibuilder/next/types";
 import { loadWebBlocks } from "@chaibuilder/next/web-blocks";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
