@@ -3,24 +3,17 @@
 import { getSupabaseClient } from "@/app/supabase-client";
 import { registerCustomBlocks } from "@/blocks";
 import { ChaiWebsiteBuilder } from "@chaibuilder/next";
+import type { ChaiLoggedInUser } from "@chaibuilder/next/types";
 import { useCallback, useEffect, useState } from "react";
 import { LoginScreen } from "./login";
 
 registerCustomBlocks();
 
-type LoggedInUser = {
-  id: string;
-  email: string;
-  name: string;
-  avatar?: string;
-  metadata?: Record<string, unknown>;
-};
-
 const supabase = getSupabaseClient();
 
 export default function Editor() {
   const [isLoggedIn, setIsLoggedIn] = useState<null | boolean>(null);
-  const [user, setUser] = useState<LoggedInUser | null>(null);
+  const [user, setUser] = useState<ChaiLoggedInUser | null>(null);
 
   useEffect(() => {
     // Check initial session
@@ -35,7 +28,7 @@ export default function Editor() {
           email: session.user.email,
           name: session.user.user_metadata.name,
           role: session.user.user_metadata.role,
-        } as LoggedInUser);
+        } as ChaiLoggedInUser);
         setIsLoggedIn(true);
       } else {
         setIsLoggedIn(false);
@@ -58,7 +51,7 @@ export default function Editor() {
           email: session.user.email,
           name: session.user.user_metadata.name,
           role: session.user.user_metadata.role,
-        } as LoggedInUser);
+        } as ChaiLoggedInUser);
         setIsLoggedIn(true);
       } else {
         setUser(null);

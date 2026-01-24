@@ -1,7 +1,7 @@
-import { registerChaiBlockSchema, stylesProp } from "@chaibuilder/next/runtime";
+import { registerChaiBlockProps, stylesProp } from "@chaibuilder/next/runtime";
 import {
   ChaiBlockComponentProps,
-  ChaiBlockDefinition,
+  ChaiBlockConfig,
   ChaiStyles,
 } from "@chaibuilder/next/types";
 
@@ -19,11 +19,11 @@ const HelloWorld = (props: ChaiBlockComponentProps<Props>) => {
   );
 };
 
-export const HelloWorldBlock: Omit<ChaiBlockDefinition<Props>, "component"> = {
+export const HelloWorldBlock: ChaiBlockConfig = {
   type: "hello-world",
   label: "Hello World",
   group: "Custom Blocks",
-  ...registerChaiBlockSchema({
+  props: registerChaiBlockProps({
     properties: {
       styles: stylesProp("text-lg font-bold underline"),
       name: { type: "string", title: "Name", default: "World" },
