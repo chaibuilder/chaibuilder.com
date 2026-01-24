@@ -15,7 +15,7 @@ module.exports = {
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
-    "./node_modules/@chaibuilder/next/dist/web-blocks/**/*.{js,cjs}",
+    "./node_modules/@chaibuilder/next/dist/**/*.{js,cjs}",
   ],
   theme: {
     extend: {
