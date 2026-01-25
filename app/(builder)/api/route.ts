@@ -7,6 +7,7 @@ import {
   SupabaseAuthActions,
   SupabaseStorageActions,
 } from "@chaibuilder/next/actions/supabase";
+import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 const supabase = getSupabaseClient();
 ChaiActionsRegistry.registerActions(SupabaseAuthActions(supabase));
@@ -42,11 +43,16 @@ export async function POST(req: NextRequest) {
     }
     authTokenOrUserId = supabaseUser.data.user?.id || "";
 
-    const actionHandler = initChaiBuilderActionHandler({
+    const handleAction = initChaiBuilderActionHandler({
       apiKey,
       userId: authTokenOrUserId,
     });
-    const response = await actionHandler(body);
+    const response = await handleAction(body);
+    if (response && "tags" in response && Array.isArray(response.tags)) {
+      response.tags.forEach((tag: string) => {
+        revalidateTag(tag, "max");
+      });
+    }
 
     // Handle streaming responses
     if (response?._streamingResponse && response?._streamResult) {
