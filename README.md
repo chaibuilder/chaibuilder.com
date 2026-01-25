@@ -61,7 +61,7 @@ npm install
 ## 3. Provision Supabase
 
 1. Log in to the [Supabase dashboard](https://supabase.com/dashboard/projects) and create a **new project**.
-2. Choose the organization, project name, and region that best match your team.
+2. Choose the organization, project name, and region that best match your requirements.
 3. Wait for the database to finish provisioning before continuing.
 
 ### Supabase credentials for this starter
