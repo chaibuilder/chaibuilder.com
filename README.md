@@ -1,24 +1,28 @@
 <p align="center">
-  <img src="https://avatars.githubusercontent.com/u/152845344?s=200&v=4" alt="ChaiBuilder" width="180" />
+  <img src="https://avatars.githubusercontent.com/u/152845344?s=200&v=4" alt="ChaiBuilder" width="80" />
 </p>
 
 # Chaibuilder Next + Supabase Starter
 
 Opinionated starter kit for building ChaiBuilder apps with Next.js (App Router) and Supabase. Follow the steps below to get a local environment running against your Supabase project.
 
+## Tech Stack
+
+- **Database**: PostgreSQL (Supabase)
+- **Auth**: Supabase Auth
+- **Storage**: Supabase Storage
+- **Realtime**: Supabase Realtime (for multi-user with page lock)
+
+> 💡 **Multi-site support**: You can run unlimited sites on the same database instance. No need to create separate databases for each site.
+
 ---
 
 ## Table of Contents
 
 1. [Prerequisites](#prerequisites)
-2. [Clone the repository](#1-clone-the-repository)
-3. [Install dependencies](#2-install-dependencies)
-4. [Provision Supabase](#3-provision-supabase)
-5. [Configure environment variables](#4-configure-environment-variables)
-6. [Create the initial admin user](#5-create-the-initial-admin-user)
-7. [Bootstrap the ChaiBuilder app](#6-bootstrap-the-chaibuilder-app)
-8. [Run the local dev server](#7-run-the-local-dev-server)
-9. [Additional scripts](#additional-scripts)
+2. [Getting Started](#1-clone-the-repository) - Clone, install dependencies
+3. [Supabase Setup](#3-provision-supabase) - Provision, database schema, environment variables, admin user
+4. [Bootstrap & Run](#7-bootstrap-the-chaibuilder-app) - Initialize app and start dev server
 
 ---
 
@@ -73,7 +77,18 @@ npm install
 
 ---
 
-## 4. Configure environment variables
+## 4. Setup Supabase Database Schema
+
+Before configuring environment variables, you need to manually create the database tables in Supabase.
+
+1. Navigate to the [ChaiBuilder SDK drizzle folder](https://github.com/chaibuilder/sdk/tree/dev/src/actions/drizzle) on GitHub.
+2. Copy the SQL schema files (`.sql` files) from that directory.
+3. In your Supabase dashboard, go to **SQL Editor**.
+4. Paste and execute the SQL schema to create the necessary tables.
+
+---
+
+## 5. Configure environment variables
 
 Copy the example file (if present) or create new ones as needed:
 
@@ -93,7 +108,7 @@ CHAIBUILDER_DATABASE_URL=
 
 ---
 
-## 5. Create the initial admin user
+## 6. Create the initial admin user
 
 1. Navigate to **Authentication → Users** inside the Supabase dashboard.
 2. Add a new user that will act as your **admin**. Use an email address you control and set a strong password.
@@ -101,9 +116,9 @@ CHAIBUILDER_DATABASE_URL=
 
 ---
 
-## 6. Bootstrap the ChaiBuilder app
+## 7. Bootstrap the ChaiBuilder app
 
-Run the project scaffolding command once your environment variables are in place:
+Run the project scaffolding command once your environment variables are in place and database tables are created:
 
 ```bash
 npx create-app
@@ -111,11 +126,11 @@ npx create-app
 
 The script will prompt for the admin user UUID. It reads database url from `.env`/`.env.local` automatically. Rerun the command whenever you need to regenerate local configuration.
 
-This will create the necessary tables and seed data for the ChaiBuilder app and show `CHAIBUILDER_APP_KEY` in the console. Copy this key and add it to your `.env` file.
+This will seed data for the ChaiBuilder app and show `CHAIBUILDER_APP_KEY` in the console. Copy this key and add it to your `.env` file.
 
 ---
 
-## 7. Run the local dev server
+## 8. Run the local dev server
 
 ```bash
 pnpm dev
