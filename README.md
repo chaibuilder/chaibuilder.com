@@ -104,7 +104,25 @@ NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_KEY=
 CHAIBUILDER_DATABASE_URL=
+CHAIBUILDER_APP_KEY=
 ```
+
+### Optional: Enable AI Features
+
+To enable AI-powered features in ChaiBuilder, add your Vercel AI Gateway API key:
+
+```dotenv
+AI_GATEWAY_API_KEY=your-vercel-ai-gateway-key
+```
+
+This enables the following AI features:
+
+- **Generate/Edit UI**: AI-powered component generation and editing
+- **Generate SEO fields**: Automatic SEO metadata generation
+- **Translate content**: Multi-language content translation
+- **Edit styles**: AI-assisted styling suggestions
+
+> 💡 Get your Vercel AI Gateway key from the [Vercel Dashboard](https://vercel.com/docs/ai-gateway).
 
 ---
 
