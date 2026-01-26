@@ -93,7 +93,7 @@ Before configuring environment variables, you need to manually create the databa
 Copy the example file (if present) or create new ones as needed:
 
 ```bash
-cp .env.example .env.local  # create the .env file in root directory
+cp .env.sample .env.local  # create the .env file in root directory
 ```
 
 Populate `.env.local` (for Next.js runtime) and `.env` (for CLI tooling) with the Supabase credentials:
