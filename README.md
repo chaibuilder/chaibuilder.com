@@ -69,9 +69,9 @@ npm install
 | Variable                        | Value                                 |
 | ------------------------------- | ------------------------------------- |
 | `NEXT_PUBLIC_SUPABASE_URL`      | `https://your-project-id.supabase.co` |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `your-anon-key`                       |
-| `SUPABASE_SERVICE_KEY`          | `your-service-key`                    |
-| `CHAIBUILDER_DATABASE_URL`      | `your-db-url`                         |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `your-anon-key` (Publishable key)                       |
+| `SUPABASE_SERVICE_KEY`          | `your-service-key` (Secret Keys)                    |
+| `CHAIBUILDER_DATABASE_URL`      | `your-db-url` (Goto Connect -> ORMs -> Drizzle)                         |
 
 > 🔐 **Security tip:** Store the keys in your environment files only. Never commit them to version control. Replace `[YOUR-PASSWORD]` with the database password shown when you created the project (or reset it from **Project settings → Database** if you no longer have it).
 
