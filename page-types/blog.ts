@@ -23,7 +23,7 @@ export const BlogPageType: ChaiPageType = {
       },
     };
   },
-
+  // Default SEO and JSON-LD for blog pages on creation
   defaultSeo: () => ({
     title: "{{blog.title}}",
     description: "{{blog.description}}",
