@@ -168,6 +168,12 @@ The app will be available at [http://localhost:3000](http://localhost:3000).
 
 ---
 
+## Deploying to Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fchaibuilder%2Fchaibuilder-next-supabase-starter&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,SUPABASE_SERVICE_KEY,CHAIBUILDER_APP_KEY,CHAIBUILDER_DATABASE_URL&project-name=chaibuilder-nextjs&repository-name=chaibuilder-nextjs)
+
+---
+
 ## Troubleshooting
 
 - **Missing environment variables**: Ensure `.env` exists and contains the Supabase keys before starting the dev server.
