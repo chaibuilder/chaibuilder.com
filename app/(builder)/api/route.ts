@@ -1,4 +1,6 @@
 import { getSupabaseClient } from "@/app/supabase-client";
+import "@/data/global";
+import { registerPageTypes } from "@/page-types";
 import {
   ChaiActionsRegistry,
   initChaiBuilderActionHandler,
@@ -9,6 +11,9 @@ import {
 } from "@chaibuilder/next/actions/supabase";
 import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
+
+registerPageTypes();
+
 const supabase = getSupabaseClient();
 ChaiActionsRegistry.registerActions(SupabaseAuthActions(supabase));
 ChaiActionsRegistry.registerActions(SupabaseStorageActions(supabase));

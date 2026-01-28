@@ -1,3 +1,6 @@
+import { registerCustomBlocks } from "@/blocks";
+import "@/data/global";
+import { registerPageTypes } from "@/page-types";
 import {
   ChaiBuilder,
   ChaiPageStyles,
@@ -10,6 +13,8 @@ import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
 loadWebBlocks();
+registerCustomBlocks();
+registerPageTypes();
 
 export const dynamic = "force-static";
 
