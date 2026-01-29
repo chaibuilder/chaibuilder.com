@@ -66,12 +66,12 @@ npm install
 
 ### Supabase credentials for this starter
 
-| Variable                        | Value                                 |
-| ------------------------------- | ------------------------------------- |
-| `NEXT_PUBLIC_SUPABASE_URL`      | `https://your-project-id.supabase.co` |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `your-anon-key` (Publishable key)                       |
-| `SUPABASE_SERVICE_KEY`          | `your-service-key` (Secret Keys)                    |
-| `CHAIBUILDER_DATABASE_URL`      | `your-db-url` (Goto Connect -> ORMs -> Drizzle)                         |
+| Variable                                       | Value                                            |
+| ---------------------------------------------- | ------------------------------------------------ |
+| `NEXT_PUBLIC_SUPABASE_URL`                     | `https://your-project-id.supabase.co`            |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY` | `your-publishable-default-key` (Publishable key) |
+| `SUPABASE_SERVICE_KEY`                         | `your-service-key` (Secret Keys)                 |
+| `CHAIBUILDER_DATABASE_URL`                     | `your-db-url` (Goto Connect -> ORMs -> Drizzle)  |
 
 > 🔐 **Security tip:** Store the keys in your environment files only. Never commit them to version control. Replace `[YOUR-PASSWORD]` with the database password shown when you created the project (or reset it from **Project settings → Database** if you no longer have it).
 
@@ -88,20 +88,40 @@ Before configuring environment variables, you need to manually create the databa
 
 ---
 
-## 5. Configure environment variables
+## 5. Create the initial admin user
+
+1. Navigate to **Authentication → Users** inside the Supabase dashboard.
+2. Add a new user that will act as your **admin**. Use an email address you control and set a strong password.
+3. Copy the newly created user's **UUID** (visible in the user details sidebar). You will need this value to bootstrap the ChaiBuilder app.
+
+---
+
+## 6. Bootstrap the ChaiBuilder app
+
+1. Navigate to the [ChaiBuilder create-app.sql script](https://github.com/chaibuilder/sdk/blob/dev/frameworks/nextjs/package/scripts/create-app.sql) on GitHub.
+2. Copy the sql query.
+3. In your Supabase dashboard, go to **SQL Editor**.
+4. Paste the query in the Supabase SQL Editor and replace the `YOUR_USER_ID` with the UUID of the admin user you created in step 5. 
+5. If you wish to change the Project name, you can do so by replacing the `My ChaiBuilder App` with your desired project name.
+6. Execute the query.
+7. You will get the `CHAIBUILDER_APP_KEY` in the response. Copy it and use it in the `.env` file.
+
+---
+
+## 7. Configure environment variables
 
 Copy the example file (if present) or create new ones as needed:
 
 ```bash
-cp .env.sample .env.local  # create the .env file in root directory
+cp .env.sample .env  # create the .env file in root directory
 ```
 
-Populate `.env.local` (for Next.js runtime) and `.env` (for CLI tooling) with the Supabase credentials:
+Populate `.env` with the Supabase credentials:
 
 ```dotenv
 # .env
 NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY=
 SUPABASE_SERVICE_KEY=
 CHAIBUILDER_DATABASE_URL=
 CHAIBUILDER_APP_KEY=
@@ -123,28 +143,6 @@ This enables the following AI features:
 - **Edit styles**: AI-assisted styling suggestions
 
 > 💡 Get your Vercel AI Gateway key from the [Vercel Dashboard](https://vercel.com/docs/ai-gateway).
-
----
-
-## 6. Create the initial admin user
-
-1. Navigate to **Authentication → Users** inside the Supabase dashboard.
-2. Add a new user that will act as your **admin**. Use an email address you control and set a strong password.
-3. Copy the newly created user's **UUID** (visible in the user details sidebar). You will need this value when running `npx create-app`.
-
----
-
-## 7. Bootstrap the ChaiBuilder app
-
-Run the project scaffolding command once your environment variables are in place and database tables are created:
-
-```bash
-npx create-app
-```
-
-The script will prompt for the admin user UUID. It reads database url from `.env`/`.env.local` automatically. Rerun the command whenever you need to regenerate local configuration.
-
-This will seed data for the ChaiBuilder app and show `CHAIBUILDER_APP_KEY` in the console. Copy this key and add it to your `.env` file.
 
 ---
 
@@ -170,7 +168,7 @@ The app will be available at [http://localhost:3000](http://localhost:3000).
 
 ## Deploying to Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fchaibuilder%2Fchaibuilder-next-supabase-starter&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY,SUPABASE_SERVICE_KEY,CHAIBUILDER_APP_KEY,CHAIBUILDER_DATABASE_URL&project-name=chaibuilder-nextjs&repository-name=chaibuilder-nextjs)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fchaibuilder%2Fchaibuilder-next-supabase-starter&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY,SUPABASE_SERVICE_KEY,CHAIBUILDER_APP_KEY,CHAIBUILDER_DATABASE_URL&project-name=chaibuilder-nextjs&repository-name=chaibuilder-nextjs)
 
 ---
 
