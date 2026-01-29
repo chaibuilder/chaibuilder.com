@@ -9,6 +9,7 @@ import {
 } from "@chaibuilder/next/render";
 import { ChaiPageProps } from "@chaibuilder/next/types";
 import { loadWebBlocks } from "@chaibuilder/next/web-blocks";
+import { PageScripts } from "@/components/website-settings/page-scripts";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
@@ -60,6 +61,7 @@ export default async function Page({
       <body className={`font-body antialiased`}>
         <PreviewBanner slug={slug} show={isEnabled} />
         <RenderChaiBlocks page={page} pageProps={pageProps} />
+        <PageScripts />
       </body>
     </html>
   );
