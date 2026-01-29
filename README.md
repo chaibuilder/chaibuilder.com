@@ -70,7 +70,7 @@ npm install
 | ---------------------------------------------- | ------------------------------------------------ |
 | `NEXT_PUBLIC_SUPABASE_URL`                     | `https://your-project-id.supabase.co`            |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY` | `your-publishable-default-key` (Publishable key) |
-| `SUPABASE_SERVICE_KEY`                         | `your-service-key` (Secret Keys)                 |
+| `SUPABASE_SECRET_KEY`                          | `your-secret-key` (Secret Keys)                  |
 | `CHAIBUILDER_DATABASE_URL`                     | `your-db-url` (Goto Connect -> ORMs -> Drizzle)  |
 
 > 🔐 **Security tip:** Store the keys in your environment files only. Never commit them to version control. Replace `[YOUR-PASSWORD]` with the database password shown when you created the project (or reset it from **Project settings → Database** if you no longer have it).
@@ -101,7 +101,7 @@ Before configuring environment variables, you need to manually create the databa
 1. Navigate to the [ChaiBuilder create-app.sql script](https://github.com/chaibuilder/sdk/blob/dev/frameworks/nextjs/package/scripts/create-app.sql) on GitHub.
 2. Copy the sql query.
 3. In your Supabase dashboard, go to **SQL Editor**.
-4. Paste the query in the Supabase SQL Editor and replace the `YOUR_USER_ID` with the UUID of the admin user you created in step 5. 
+4. Paste the query in the Supabase SQL Editor and replace the `YOUR_USER_ID` with the UUID of the admin user you created in step 5.
 5. If you wish to change the Project name, you can do so by replacing the `My ChaiBuilder App` with your desired project name.
 6. Execute the query.
 7. You will get the `CHAIBUILDER_APP_KEY` in the response. Copy it and use it in the `.env` file.
@@ -122,7 +122,7 @@ Populate `.env` with the Supabase credentials:
 # .env
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY=
-SUPABASE_SERVICE_KEY=
+SUPABASE_SECRET_KEY=
 CHAIBUILDER_DATABASE_URL=
 CHAIBUILDER_APP_KEY=
 ```
@@ -168,7 +168,7 @@ The app will be available at [http://localhost:3000](http://localhost:3000).
 
 ## Deploying to Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fchaibuilder%2Fchaibuilder-next-supabase-starter&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY,SUPABASE_SERVICE_KEY,CHAIBUILDER_APP_KEY,CHAIBUILDER_DATABASE_URL&project-name=chaibuilder-nextjs&repository-name=chaibuilder-nextjs)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fchaibuilder%2Fchaibuilder-next-supabase-starter&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY,SUPABASE_SECRET_KEY,CHAIBUILDER_APP_KEY,CHAIBUILDER_DATABASE_URL&project-name=chaibuilder-nextjs&repository-name=chaibuilder-nextjs)
 
 ---
 
