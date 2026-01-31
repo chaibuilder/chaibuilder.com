@@ -29,7 +29,7 @@ Gather these from your [Supabase Dashboard](https://supabase.com/dashboard/proje
 | Variable | Location |
 | :--- | :--- |
 | `NEXT_PUBLIC_SUPABASE_URL` | **Connect** > App Frameworks |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | **Connect** > App Frameworks |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY` | **Connect** > App Frameworks |
 | `SUPABASE_SECRET_KEY` | **Project Settings** > API Keys > `service_role` key |
 | `CHAIBUILDER_DATABASE_URL` | **Connect** > ORMs > Drizzle (Replace `[YOUR-PASSWORD]` with your DB password. Copy without quotes.) |
 | `CHAIBUILDER_APP_KEY` | Result from Step B.3 |
