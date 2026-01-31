@@ -5,32 +5,41 @@
 # Chaibuilder Next + Supabase Starter
 
 Opinionated starter kit for building ChaiBuilder apps with Next.js (App Router) and Supabase. Follow the steps below to get a local environment running against your Supabase project.
+## 1. Prepare Environment Variables
+Gather these from your [Supabase Dashboard](https://supabase.com/dashboard/projects) before deploying.
 
-## Steps:
+### A. Create Project
+* Create a new project and **save your Database Password** immediately. Supabase only shows this once.
 
-1. Log in to the [Supabase dashboard](https://supabase.com/dashboard/projects) and create a **new project**.
-2. Impor the Database schema in SQL editor. [DB Schema](https://github.com/chaibuilder/sdk/blob/dev/src/actions/drizzle/0000_colossal_ultragirl.sql)
-3. Create a user or use an existing one.
-   - Goto Authentication -> Add User
-   - Add email / password ( will be used later to login )
-   - Copy the user id generated
-4. Create a new APP_KEY by running [the script](https://github.com/chaibuilder/sdk/blob/dev/frameworks/nextjs/package/scripts/create-app.sql) in SQL Editor. Replace the `USER_ID` before running script.
+### B. Initialize Database
+1. **Schema:** Run the [DB Schema SQL](https://github.com/chaibuilder/sdk/blob/dev/src/actions/drizzle/0000_colossal_ultragirl.sql) in the **SQL Editor**.
+2. **User:** Go to **Authentication > Add User**. Note the **Email/Password** for login and copy the generated **User ID**.
+3. **App Key:** Run the [App Key Script](https://github.com/chaibuilder/sdk/blob/dev/frameworks/nextjs/package/scripts/create-app.sql) in the SQL Editor. 
+   * *Note: Replace `YOUR_USER_ID` with the ID from the previous step before running.*
+   * Copy the generated **App Key**.
 
-## Deploying to Vercel
-Click deploy to start. [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fchaibuilder%2Fchaibuilder-next-supabase-starter&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY,SUPABASE_SECRET_KEY,CHAIBUILDER_APP_KEY,CHAIBUILDER_DATABASE_URL&project-name=chaibuilder-nextjs&repository-name=chaibuilder-nextjs)
+### C. Collect Keys
+> Connect button is in top bar
 
-Deployment process with ask to enter ENV variables as below.
-| Variable                                       | Value                                            |
-| ---------------------------------------------- | ------------------------------------------------ |
-| `NEXT_PUBLIC_SUPABASE_URL`                     | `https://****.supabase.co` (Goto: Connect -> App Frameworks )             |
-| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY` | `your-publishable-default-key` (Goto: Connect -> App Frameworks)  |
-| `SUPABASE_SECRET_KEY`                          | `your-secret-key` (Goto: Project Settings -> API Keys -> Secret Keys)                  |
-| `CHAIBUILDER_DATABASE_URL`                     | `your-db-url` (Goto Connect -> ORMs -> Drizzle)  |
-| `CHAIBUILDER_APP_KEY `                         | Copy from step 4 above
+| Variable | Location |
+| :--- | :--- |
+| `NEXT_PUBLIC_SUPABASE_URL` | **Connect** > App Frameworks |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | **Connect** > App Frameworks |
+| `SUPABASE_SECRET_KEY` | **Project Settings** > API Keys > `Secret keys` Section |
+| `CHAIBUILDER_DATABASE_URL` | **Connect** > ORMs > Drizzle (Replace `[YOUR-PASSWORD]` with your DB password in URL. Copy without quotes) |
+| `CHAIBUILDER_APP_KEY` | Result from Step B.3 |
 
+---
 
-## Post deployment:
-Visit the /editor path on your deployed url. Login with email password credentials and start building.
+## 2. Deploy to Vercel
+Click the button below and paste the variables collected above:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fchaibuilder%2Fchaibuilder-next-supabase-starter&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY,SUPABASE_SECRET_KEY,CHAIBUILDER_APP_KEY,CHAIBUILDER_DATABASE_URL&project-name=chaibuilder-nextjs&repository-name=chaibuilder-nextjs)
+
+---
+
+## 3. Launch
+Navigate to `/editor` on your deployed URL and log in with the email/password you created in Step B.2.
 
 
 ### Optional: Enable AI Features
