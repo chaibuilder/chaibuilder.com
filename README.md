@@ -4,9 +4,14 @@
 
 # Chaibuilder Next + Supabase Starter
 
-Opinionated starter kit for building ChaiBuilder apps with Next.js (App Router) and Supabase. Follow the steps below to get a local environment running against your Supabase project.
+An opinionated starter kit for building ChaiBuilder apps with Next.js (App Router) and Supabase. 
+
+> ⚡️ **Fully Online Setup:** You can complete the entire deployment process in your browser. No local environment or coding is required to get your site live.
+
+---
+
 ## 1. Prepare Environment Variables
-Gather these from your [Supabase Dashboard](https://supabase.com/dashboard/projects) before deploying.
+Gather these from your [Supabase Dashboard](https://supabase.com/dashboard/projects) before clicking deploy.
 
 ### A. Create Project
 * Create a new project and **save your Database Password** immediately. Supabase only shows this once.
@@ -19,20 +24,20 @@ Gather these from your [Supabase Dashboard](https://supabase.com/dashboard/proje
    * Copy the generated **App Key**.
 
 ### C. Collect Keys
-> Connect button is in top bar
+> 💡 The "Connect" button is located in the top bar of the Supabase dashboard.
 
 | Variable | Location |
 | :--- | :--- |
 | `NEXT_PUBLIC_SUPABASE_URL` | **Connect** > App Frameworks |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | **Connect** > App Frameworks |
-| `SUPABASE_SECRET_KEY` | **Project Settings** > API Keys > `Secret keys` Section |
-| `CHAIBUILDER_DATABASE_URL` | **Connect** > ORMs > Drizzle (Replace `[YOUR-PASSWORD]` with your DB password in URL. Copy without quotes) |
+| `SUPABASE_SECRET_KEY` | **Project Settings** > API Keys > `service_role` key |
+| `CHAIBUILDER_DATABASE_URL` | **Connect** > ORMs > Drizzle (Replace `[YOUR-PASSWORD]` with your DB password. Copy without quotes.) |
 | `CHAIBUILDER_APP_KEY` | Result from Step B.3 |
 
 ---
 
 ## 2. Deploy to Vercel
-Click the button below and paste the variables collected above:
+Click the button below and paste the variables collected above into the Vercel deployment form:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fchaibuilder%2Fchaibuilder-next-supabase-starter&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY,SUPABASE_SECRET_KEY,CHAIBUILDER_APP_KEY,CHAIBUILDER_DATABASE_URL&project-name=chaibuilder-nextjs&repository-name=chaibuilder-nextjs)
 
@@ -41,22 +46,29 @@ Click the button below and paste the variables collected above:
 ## 3. Launch
 Navigate to `/editor` on your deployed URL and log in with the email/password you created in Step B.2.
 
+---
+
+## Optional: Local Setup
+If you prefer to develop or customize the starter kit locally:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/chaibuilder/chaibuilder-next-supabase-starter.git
+2. Set Environment Variables: Create a .env file in the root and add the keys collected in Step 1.C.
+3. Install & Run:
+```bash
+npm install
+npm run dev
+```
+4. Access the local editor at http://localhost:3000/editor.
 
 ### Optional: Enable AI Features
+To enable AI-powered features (UI generation, SEO, and translation), add your Vercel AI Gateway API key to your environment variables:
 
-To enable AI-powered features in ChaiBuilder, add your Vercel AI Gateway API key:
-
-```dotenv
+Code snippet
+```bash
 AI_GATEWAY_API_KEY=your-vercel-ai-gateway-key
 ```
-
-This enables the following AI features:
-
-- **Generate/Edit UI**: AI-powered component generation and editing
-- **Generate SEO fields**: Automatic SEO metadata generation
-- **Translate content**: Multi-language content translation
-- **Edit styles**: AI-assisted styling suggestions
-
 > 💡 Get your Vercel AI Gateway key from the [Vercel Dashboard](https://vercel.com/docs/ai-gateway).
 
 ---
