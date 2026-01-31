@@ -29,6 +29,9 @@ Deployment process with ask to enter ENV variables as below.
 | `CHAIBUILDER_APP_KEY `                         | Copy from step 4 above
 
 
+## Post deployment:
+Visit the /editor path on your deployed url. Login with email password credentials and start building.
+
 
 ### Optional: Enable AI Features
 
