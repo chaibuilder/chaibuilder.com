@@ -237,7 +237,7 @@ export const LoginScreen = () => {
           </div>
         </div>
 
-        <div class="hidden">
+        <div className="hidden">
           <button
             type="button"
             onClick={handleGoogleLogin}
