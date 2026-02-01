@@ -89,6 +89,7 @@ AI_GATEWAY_API_KEY=your-vercel-ai-gateway-key
 - **Missing environment variables**: Ensure `.env` exists and contains the Supabase keys before starting the dev server.
 - **Authentication errors**: Confirm the admin user exists and you copied the correct UUID.
 - **Database connection issues**: Reset the database password in Supabase and update `CHAIBUILDER_DATABASE_URL` accordingly.
+- **Do not have access to edit website**: Ensure the records in `app_users` table have the correct entry for `user` and `app` columns.
 
 ---
 
