@@ -1,6 +1,7 @@
 "use client";
 
 import { getSupabaseClient } from "@/app/supabase-client";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 const supabase = getSupabaseClient();
@@ -14,7 +15,9 @@ export const LoginScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const searchParams = useSearchParams();
+  const unauthorized = searchParams.get("unauthorized");
+  const sessionExpired = searchParams.get("session_expired");
   const handleEmailLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setResponseError("");
@@ -34,7 +37,7 @@ export const LoginScreen = () => {
       setResponseError(
         error instanceof Error && error.message
           ? error.message
-          : "Something went wrong"
+          : "Something went wrong",
       );
       setIsLoading(false);
     }
@@ -60,7 +63,7 @@ export const LoginScreen = () => {
       setResponseError(
         error instanceof Error && error.message
           ? error.message
-          : "Something went wrong"
+          : "Something went wrong",
       );
       setIsLoading(false);
     }
@@ -85,7 +88,7 @@ export const LoginScreen = () => {
       setResponseError(
         error instanceof Error && error.message
           ? error.message
-          : "Something went wrong"
+          : "Something went wrong",
       );
       setIsLoading(false);
     }
@@ -114,6 +117,18 @@ export const LoginScreen = () => {
         {responseSuccess && (
           <div className="rounded-md bg-green-50 p-3 text-sm text-green-800">
             {responseSuccess}
+          </div>
+        )}
+
+        {unauthorized && (
+          <div className="rounded-md bg-red-50 p-3 text-sm text-red-800">
+            You do not have access to edit this website. Please contact
+            administrator
+          </div>
+        )}
+        {sessionExpired && (
+          <div className="rounded-md bg-red-50 p-3 text-sm text-red-800">
+            Your session has expired. Please sign in again.
           </div>
         )}
 
@@ -220,8 +235,7 @@ export const LoginScreen = () => {
                   setResponseError("");
                   setResponseSuccess("");
                 }}
-                className="font-semibold text-blue-600 hover:text-blue-500"
-              >
+                className="font-semibold text-blue-600 hover:text-blue-500">
                 Back to sign in
               </button>
             </div>
@@ -233,7 +247,9 @@ export const LoginScreen = () => {
             <div className="w-full border-t border-gray-300" />
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="bg-white px-2 text-gray-500">Or continue with</span>
+            <span className="bg-white px-2 text-gray-500">
+              Or continue with
+            </span>
           </div>
         </div>
 
