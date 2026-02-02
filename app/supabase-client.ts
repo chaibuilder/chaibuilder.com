@@ -22,6 +22,8 @@ export const getSupabaseClient = () => {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
   const supabaseKey =
     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY || "";
-  CLIENT_INSTANCE = createClient(supabaseUrl, supabaseKey);
+  CLIENT_INSTANCE = createClient(supabaseUrl, supabaseKey, {
+    realtime: { worker: true },
+  });
   return CLIENT_INSTANCE;
 };

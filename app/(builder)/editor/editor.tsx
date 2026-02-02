@@ -14,7 +14,6 @@ const supabase = getSupabaseClient();
 export default function Editor() {
   const [isLoggedIn, setIsLoggedIn] = useState<null | boolean>(null);
   const [user, setUser] = useState<ChaiLoggedInUser | null>(null);
-
   useEffect(() => {
     // Check initial session
     const checkInitialSession = async () => {
@@ -65,9 +64,17 @@ export default function Editor() {
     };
   }, [user?.id]);
 
-  const handleLogout = useCallback(async () => {
-    await supabase.auth.signOut();
-  }, []);
+  const handleLogout = useCallback(
+    async (reason?: string) => {
+      await supabase.auth.signOut();
+      if (reason) {
+        window.location.href = `/editor?${reason.toLowerCase()}=true`;
+      } else {
+        window.location.reload();
+      }
+    },
+    [supabase],
+  );
 
   const getAccessToken = useCallback(async () => {
     const {
