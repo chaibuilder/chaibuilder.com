@@ -16,7 +16,7 @@ Gather these from your [Supabase Dashboard](https://supabase.com/dashboard/proje
 ### A. Create Project
 * Create a new project and **save your Database Password** immediately. Supabase only shows this once.
 
-### B. Initialize Database
+### B. Initialize Database in Supabase
 1. **Schema:** Run the [DB Schema SQL](https://github.com/chaibuilder/sdk/blob/dev/src/actions/drizzle/0000_colossal_ultragirl.sql) in the **SQL Editor**.
 2. **User:** Go to **Authentication > Add User**. Note the **Email/Password** for login and copy the generated **User ID**.
 3. **App Key:** Run the [App Key Script](https://github.com/chaibuilder/sdk/blob/dev/frameworks/nextjs/package/scripts/create-app.sql) in the SQL Editor. 
