@@ -1,4 +1,4 @@
-import { getSupabaseClient } from "@/app/supabase-client";
+import { getSupabaseAdmin } from "@/app/supabase-admin";
 import "@/data/global";
 import { registerPageTypes } from "@/page-types";
 import {
@@ -14,7 +14,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 registerPageTypes();
 
-const supabase = getSupabaseClient();
+const supabase = getSupabaseAdmin();
 ChaiActionsRegistry.registerActions(SupabaseAuthActions(supabase));
 ChaiActionsRegistry.registerActions(SupabaseStorageActions(supabase));
 
@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
 
     // Supabase authentication check
-    const supabase = getSupabaseClient();
+    const supabase = getSupabaseAdmin();
     const supabaseUser = await supabase.auth.getUser(authTokenOrUserId);
     if (supabaseUser.error) {
       return NextResponse.json(
