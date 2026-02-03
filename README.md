@@ -11,19 +11,26 @@ An opinionated starter kit for building ChaiBuilder apps with Next.js (App Route
 ---
 
 ## 1. Prepare Environment Variables
-Gather these from your [Supabase Dashboard](https://supabase.com/dashboard/projects) before clicking deploy.
+
+Gather these from your <a href="https://supabase.com/dashboard/projects" target="_blank">Supabase Dashboard</a> before clicking deploy.
 
 ### A. Create Project
 * Create a new project and **save your Database Password** immediately. Supabase only shows this once.
 
-### B. Initialize Database
-1. **Schema:** Run the [DB Schema SQL](https://github.com/chaibuilder/sdk/blob/dev/src/actions/drizzle/0000_colossal_ultragirl.sql) in the **SQL Editor**.
-2. **User:** Go to **Authentication > Add User**. Note the **Email/Password** for login and copy the generated **User ID**.
-3. **App Key:** Run the [App Key Script](https://github.com/chaibuilder/sdk/blob/dev/frameworks/nextjs/package/scripts/create-app.sql) in the SQL Editor. 
-   * *Note: Replace `YOUR_USER_ID` with the ID from the previous step before running.*
-   * Copy the generated **App Key**.
+### B. Initialize Database in Supabase
 
-### C. Collect Keys
+1. **Schema:** Run the <a href="https://github.com/chaibuilder/sdk/blob/dev/src/actions/drizzle/0000_colossal_ultragirl.sql" target="_blank">DB Schema SQL</a> in the **SQL Editor**.
+2. **User:** Go to **Authentication > Add User**. Note the **Email/Password** for login and copy the generated **User ID**.
+3. **App Key:** Run the <a href="https://github.com/chaibuilder/sdk/blob/dev/frameworks/nextjs/package/scripts/create-app.sql" target="_blank">App Key Script</a> in the SQL Editor.
+   - _Note: Replace `YOUR_USER_ID` with the ID from the previous step before running._
+   - Copy the generated **App Key**.
+
+### C. Create Storage Bucket
+1. Go to **Storage** in your Supabase project.
+2. Create a new bucket named `dam-assets`.
+3. Set the bucket to **Public**.
+
+### D. Collect Keys
 > 💡 The "Connect" button is located in the top bar of the Supabase dashboard.
 
 | Variable | Location |
@@ -54,7 +61,7 @@ If you prefer to develop or customize the starter kit locally:
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/chaibuilder/chaibuilder-next-supabase-starter.git
-2. Set Environment Variables: Create a .env file in the root and add the keys collected in Step 1.C.
+2. Set Environment Variables: Create a .env file in the root and add the keys collected in Step 1.D.
 3. Install & Run:
 ```bash
 npm install
@@ -69,7 +76,8 @@ Code snippet
 ```bash
 AI_GATEWAY_API_KEY=your-vercel-ai-gateway-key
 ```
-> 💡 Get your Vercel AI Gateway key from the [Vercel Dashboard](https://vercel.com/docs/ai-gateway).
+
+> 💡 Get your Vercel AI Gateway key from the <a href="https://vercel.com/docs/ai-gateway" target="_blank">Vercel Dashboard</a>.
 
 ---
 
@@ -95,8 +103,8 @@ AI_GATEWAY_API_KEY=your-vercel-ai-gateway-key
 
 ## Resources
 
-- [ChaiBuilder](https://docs.chaibuilder.com)
-- [Supabase documentation](https://supabase.com/docs)
-- [Next.js App Router docs](https://nextjs.org/docs/app)
+- <a href="https://docs.chaibuilder.com" target="_blank">ChaiBuilder</a>
+- <a href="https://supabase.com/docs" target="_blank">Supabase documentation</a>
+- <a href="https://nextjs.org/docs/app" target="_blank">Next.js App Router docs</a>
 
 Happy building! ☕️
