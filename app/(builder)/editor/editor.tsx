@@ -102,7 +102,7 @@ export default function Editor() {
 
   return (
     <ChaiWebsiteBuilder
-      flags={{ dragAndDrop: true }}
+      flags={{ dragAndDrop: true, ai: true }}
       currentUser={user}
       autoSave
       autoSaveActionsCount={5}
