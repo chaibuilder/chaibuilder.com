@@ -25,7 +25,12 @@ Gather these from your <a href="https://supabase.com/dashboard/projects" target=
    - _Note: Replace `YOUR_USER_ID` with the ID from the previous step before running._
    - Copy the generated **App Key**.
 
-### C. Collect Keys
+### C. Create Storage Bucket
+1. Go to **Storage** in your Supabase project.
+2. Create a new bucket named `dam-assets`.
+3. Set the bucket to **Public**.
+
+### D. Collect Keys
 > 💡 The "Connect" button is located in the top bar of the Supabase dashboard.
 
 | Variable | Location |
@@ -56,7 +61,7 @@ If you prefer to develop or customize the starter kit locally:
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/chaibuilder/chaibuilder-next-supabase-starter.git
-2. Set Environment Variables: Create a .env file in the root and add the keys collected in Step 1.C.
+2. Set Environment Variables: Create a .env file in the root and add the keys collected in Step 1.D.
 3. Install & Run:
 ```bash
 npm install
