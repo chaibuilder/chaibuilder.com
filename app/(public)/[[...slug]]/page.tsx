@@ -1,4 +1,5 @@
 import { registerCustomBlocks } from "@/blocks";
+import { PageScripts } from "@/components/website-settings/page-scripts";
 import "@/data/global";
 import { registerPageTypes } from "@/page-types";
 import {
@@ -9,7 +10,7 @@ import {
 } from "@chaibuilder/next/render";
 import { ChaiPageProps } from "@chaibuilder/next/types";
 import { loadWebBlocks } from "@chaibuilder/next/web-blocks";
-import { PageScripts } from "@/components/website-settings/page-scripts";
+import { Geist } from "next/font/google";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
@@ -18,6 +19,15 @@ registerCustomBlocks();
 registerPageTypes();
 
 export const dynamic = "force-static";
+
+const heading = Geist({
+  variable: "--font-heading",
+  weight: ["400", "500", "600", "700"],
+});
+const body = Geist({
+  variable: "--font-body",
+  weight: ["400", "500", "600", "700"],
+});
 
 export const generateMetadata = async (props: {
   params: Promise<{ slug: string[] }>;
@@ -54,11 +64,13 @@ export default async function Page({
     pageLang: page.lang,
   };
   return (
-    <html className={`smooth-scroll`} lang={page.lang}>
+    <html
+      className={`smooth-scroll ${heading.variable} ${body.variable}`}
+      lang={page.lang}>
       <head>
         <ChaiPageStyles page={page} />
       </head>
-      <body className={`font-body antialiased`}>
+      <body className={`antialiased`}>
         <PreviewBanner slug={slug} show={isEnabled} />
         <RenderChaiBlocks page={page} pageProps={pageProps} />
         <PageScripts />
