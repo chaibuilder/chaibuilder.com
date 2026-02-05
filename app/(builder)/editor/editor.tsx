@@ -6,8 +6,11 @@ import { ChaiWebsiteBuilder } from "@chaibuilder/next";
 import type { ChaiLoggedInUser } from "@chaibuilder/next/types";
 import { useCallback, useEffect, useState } from "react";
 import { LoginScreen } from "./login";
+import { registerChaiLibrary } from "@chaibuilder/next/runtime-client";
+import { defaultChaiLibrary } from "@chaibuilder/next";
 
 registerCustomBlocks();
+registerChaiLibrary("chai-library", defaultChaiLibrary());
 
 const supabase = getSupabaseClient();
 
