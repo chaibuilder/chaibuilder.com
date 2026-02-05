@@ -6,7 +6,7 @@
 
 An opinionated starter kit for building ChaiBuilder apps with Next.js (App Router) and Supabase. 
 
-> ⚡️ **Fully Online Setup:** You can complete the entire deployment process in your browser. No local environment or coding is required to get your site live.
+> ⚡️ **Fully Online Setup:** You can complete the entire deployment process in your browser. No local environment or coding is required to get your site live
 
 ---
 
