@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "@next/third-parties": "^16.0.10",
-    "@chaibuilder/next": "^4.0.0-beta.24",
+    "@chaibuilder/next": "^4.0.0-beta.25",
     "@supabase/supabase-js": "^2.90.1",
-    "next": "^16.1.5",
+    "next": "^16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },
