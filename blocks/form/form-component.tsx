@@ -1,6 +1,6 @@
 "use client";
 
-import { formSubmit } from "@/lib/form-submit";
+import { formSubmit } from "@/blocks/form/form-submit-action";
 import { useState } from "react";
 
 type FormJSON = Record<string, string | boolean | number | null>;
