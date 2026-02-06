@@ -4,8 +4,19 @@ export const registerFonts = () => {
   registerChaiFont("Roboto", {
     src: [
       {
-        url: "/fonts/roboto/Roboto-Variable.woff2",
+        url: "/fonts/roboto/Roboto-300.woff2",
         format: "woff2",
+        weight: "300",
+      },
+      {
+        url: "/fonts/roboto/Roboto-400.woff2",
+        format: "woff2",
+        weight: "400",
+      },
+      {
+        url: "/fonts/roboto/Roboto-700.woff2",
+        format: "woff2",
+        weight: "700",
       },
     ],
     fallback: "sans-serif",
@@ -14,8 +25,19 @@ export const registerFonts = () => {
   registerChaiFont("Open Sans", {
     src: [
       {
-        url: "/fonts/opensans/OpenSans-Variable.woff2",
+        url: "/fonts/opensans/OpenSans-300.woff2",
         format: "woff2",
+        weight: "300",
+      },
+      {
+        url: "/fonts/opensans/OpenSans-400.woff2",
+        format: "woff2",
+        weight: "400",
+      },
+      {
+        url: "/fonts/opensans/OpenSans-700.woff2",
+        format: "woff2",
+        weight: "700",
       },
     ],
     fallback: "sans-serif",
@@ -24,8 +46,19 @@ export const registerFonts = () => {
   registerChaiFont("Lato", {
     src: [
       {
-        url: "/fonts/lato/Lato-Regular.woff2",
+        url: "/fonts/lato/Lato-300.woff2",
         format: "woff2",
+        weight: "300",
+      },
+      {
+        url: "/fonts/lato/Lato-400.woff2",
+        format: "woff2",
+        weight: "400",
+      },
+      {
+        url: "/fonts/lato/Lato-700.woff2",
+        format: "woff2",
+        weight: "700",
       },
     ],
     fallback: "sans-serif",
@@ -34,8 +67,19 @@ export const registerFonts = () => {
   registerChaiFont("Montserrat", {
     src: [
       {
-        url: "/fonts/montserrat/Montserrat-Variable.woff2",
+        url: "/fonts/montserrat/Montserrat-300.woff2",
         format: "woff2",
+        weight: "300",
+      },
+      {
+        url: "/fonts/montserrat/Montserrat-400.woff2",
+        format: "woff2",
+        weight: "400",
+      },
+      {
+        url: "/fonts/montserrat/Montserrat-700.woff2",
+        format: "woff2",
+        weight: "700",
       },
     ],
     fallback: "sans-serif",
@@ -44,8 +88,19 @@ export const registerFonts = () => {
   registerChaiFont("Inter", {
     src: [
       {
-        url: "/fonts/inter/Inter-Variable.woff2",
+        url: "/fonts/inter/Inter-300.woff2",
         format: "woff2",
+        weight: "300",
+      },
+      {
+        url: "/fonts/inter/Inter-400.woff2",
+        format: "woff2",
+        weight: "400",
+      },
+      {
+        url: "/fonts/inter/Inter-700.woff2",
+        format: "woff2",
+        weight: "700",
       },
     ],
     fallback: "sans-serif",
