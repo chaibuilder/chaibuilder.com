@@ -1,40 +1,40 @@
 import { registerChaiFont } from "@chaibuilder/next/runtime";
 
 export const registerFonts = () => {
-  registerChaiFont("Inter", {
+  registerChaiFont("Figtree", {
     src: [
       {
-        url: "/fonts/inter/Inter-VariableFont_opsz,wght.woff2",
+        url: "/fonts/figtree/Figtree-VariableFont_wght.woff2",
         format: "woff2",
       },
     ],
     fallback: "serif",
   });
 
-  registerChaiFont("Montserrat", {
+  registerChaiFont("Manrope", {
     src: [
       {
-        url: "/fonts/montserrat/Montserrat-VariableFont_wght.woff2",
+        url: "/fonts/manrope/Manrope-VariableFont_wght.woff2",
         format: "woff2",
       },
     ],
     fallback: "serif",
   });
 
-  registerChaiFont("Roboto", {
+  registerChaiFont("Onest", {
     src: [
       {
-        url: "/fonts/robot/Roboto-VariableFont_wdth,wght.woff2",
+        url: "/fonts/onset/Onest-VariableFont_wght.woff2",
         format: "woff2",
       },
     ],
     fallback: "serif",
   });
 
-  registerChaiFont("Roboto Flex", {
+  registerChaiFont("Urbanist", {
     src: [
       {
-        url: "/fonts/robot-flex/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.woff2",
+        url: "/fonts/urbanist/Urbanist-VariableFont_wght.woff2",
         format: "woff2",
       },
     ],
