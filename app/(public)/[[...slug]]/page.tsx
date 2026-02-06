@@ -11,7 +11,6 @@ import {
 } from "@chaibuilder/next/render";
 import { ChaiPageProps } from "@chaibuilder/next/types";
 import { loadWebBlocks } from "@chaibuilder/next/web-blocks";
-import { Geist } from "next/font/google";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
@@ -21,15 +20,6 @@ registerPageTypes();
 registerFonts();
 
 export const dynamic = "force-static";
-
-const heading = Geist({
-  variable: "--font-heading",
-  weight: ["400", "500", "600", "700"],
-});
-const body = Geist({
-  variable: "--font-body",
-  weight: ["400", "500", "600", "700"],
-});
 
 export const generateMetadata = async (props: {
   params: Promise<{ slug: string[] }>;
@@ -66,9 +56,7 @@ export default async function Page({
     pageLang: page.lang,
   };
   return (
-    <html
-      className={`smooth-scroll ${heading.variable} ${body.variable}`}
-      lang={page.lang}>
+    <html className={`smooth-scroll`} lang={page.lang}>
       <head>
         <ChaiPageStyles page={page} />
       </head>
