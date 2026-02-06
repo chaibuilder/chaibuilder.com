@@ -1,53 +1,53 @@
 import { registerChaiFont } from "@chaibuilder/next/runtime";
 
 export const registerFonts = () => {
-  registerChaiFont("Figtree", {
+  registerChaiFont("Roboto", {
     src: [
       {
-        url: "/fonts/figtree/Figtree-VariableFont_wght.woff2",
+        url: "/fonts/roboto/Roboto-Variable.woff2",
         format: "woff2",
       },
     ],
-    fallback: "serif",
+    fallback: "sans-serif",
   });
 
-  registerChaiFont("Manrope", {
+  registerChaiFont("Open Sans", {
     src: [
       {
-        url: "/fonts/manrope/Manrope-VariableFont_wght.woff2",
+        url: "/fonts/opensans/OpenSans-Variable.woff2",
         format: "woff2",
       },
     ],
-    fallback: "serif",
+    fallback: "sans-serif",
   });
 
-  registerChaiFont("Onest", {
+  registerChaiFont("Lato", {
     src: [
       {
-        url: "/fonts/onset/Onest-VariableFont_wght.woff2",
+        url: "/fonts/lato/Lato-Regular.woff2",
         format: "woff2",
       },
     ],
-    fallback: "serif",
+    fallback: "sans-serif",
   });
 
-  registerChaiFont("Urbanist", {
+  registerChaiFont("Montserrat", {
     src: [
       {
-        url: "/fonts/urbanist/Urbanist-VariableFont_wght.woff2",
+        url: "/fonts/montserrat/Montserrat-Variable.woff2",
         format: "woff2",
       },
     ],
-    fallback: "serif",
+    fallback: "sans-serif",
   });
 
-  registerChaiFont("Work Sans", {
+  registerChaiFont("Inter", {
     src: [
       {
-        url: "/fonts/work-sans/WorkSans-VariableFont_wght.woff2",
+        url: "/fonts/inter/Inter-Variable.woff2",
         format: "woff2",
       },
     ],
-    fallback: "serif",
+    fallback: "sans-serif",
   });
 };
