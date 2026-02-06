@@ -1,53 +1,108 @@
 import { registerChaiFont } from "@chaibuilder/next/runtime";
 
 export const registerFonts = () => {
-  registerChaiFont("Figtree", {
+  registerChaiFont("Roboto", {
     src: [
       {
-        url: "/fonts/figtree/Figtree-VariableFont_wght.woff2",
+        url: "/fonts/roboto/Roboto-300.woff2",
         format: "woff2",
+        fontWeight: "300",
+      },
+      {
+        url: "/fonts/roboto/Roboto-400.woff2",
+        format: "woff2",
+        fontWeight: "400",
+      },
+      {
+        url: "/fonts/roboto/Roboto-700.woff2",
+        format: "woff2",
+        fontWeight: "700",
       },
     ],
-    fallback: "serif",
+    fallback: "sans-serif",
   });
 
-  registerChaiFont("Manrope", {
+  registerChaiFont("Open Sans", {
     src: [
       {
-        url: "/fonts/manrope/Manrope-VariableFont_wght.woff2",
+        url: "/fonts/opensans/OpenSans-300.woff2",
         format: "woff2",
+        fontWeight: "300",
+      },
+      {
+        url: "/fonts/opensans/OpenSans-400.woff2",
+        format: "woff2",
+        fontWeight: "400",
+      },
+      {
+        url: "/fonts/opensans/OpenSans-700.woff2",
+        format: "woff2",
+        fontWeight: "700",
       },
     ],
-    fallback: "serif",
+    fallback: "sans-serif",
   });
 
-  registerChaiFont("Onest", {
+  registerChaiFont("Lato", {
     src: [
       {
-        url: "/fonts/onset/Onest-VariableFont_wght.woff2",
+        url: "/fonts/lato/Lato-300.woff2",
         format: "woff2",
+        fontWeight: "300",
+      },
+      {
+        url: "/fonts/lato/Lato-400.woff2",
+        format: "woff2",
+        fontWeight: "400",
+      },
+      {
+        url: "/fonts/lato/Lato-700.woff2",
+        format: "woff2",
+        fontWeight: "700",
       },
     ],
-    fallback: "serif",
+    fallback: "sans-serif",
   });
 
-  registerChaiFont("Urbanist", {
+  registerChaiFont("Montserrat", {
     src: [
       {
-        url: "/fonts/urbanist/Urbanist-VariableFont_wght.woff2",
+        url: "/fonts/montserrat/Montserrat-300.woff2",
         format: "woff2",
+        fontWeight: "300",
+      },
+      {
+        url: "/fonts/montserrat/Montserrat-400.woff2",
+        format: "woff2",
+        fontWeight: "400",
+      },
+      {
+        url: "/fonts/montserrat/Montserrat-700.woff2",
+        format: "woff2",
+        fontWeight: "700",
       },
     ],
-    fallback: "serif",
+    fallback: "sans-serif",
   });
 
-  registerChaiFont("Work Sans", {
+  registerChaiFont("Inter", {
     src: [
       {
-        url: "/fonts/work-sans/WorkSans-VariableFont_wght.woff2",
+        url: "/fonts/inter/Inter-300.woff2",
         format: "woff2",
+        fontWeight: "300",
+      },
+      {
+        url: "/fonts/inter/Inter-400.woff2",
+        format: "woff2",
+        fontWeight: "400",
+      },
+      {
+        url: "/fonts/inter/Inter-700.woff2",
+        format: "woff2",
+        fontWeight: "700",
       },
     ],
-    fallback: "serif",
+    fallback: "sans-serif",
   });
 };
