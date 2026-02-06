@@ -8,9 +8,11 @@ import { useCallback, useEffect, useState } from "react";
 import { LoginScreen } from "./login";
 import { registerChaiLibrary } from "@chaibuilder/next/runtime-client";
 import { defaultChaiLibrary } from "@chaibuilder/next";
+import { registerFonts } from "@/fonts";
 
 registerCustomBlocks();
 registerChaiLibrary("chai-library", defaultChaiLibrary());
+registerFonts();
 
 const supabase = getSupabaseClient();
 

@@ -1,5 +1,6 @@
 import { registerCustomBlocks } from "@/blocks";
 import "@/data/global";
+import { registerFonts } from "@/fonts";
 import { registerPageTypes } from "@/page-types";
 import {
   ChaiBuilder,
@@ -15,6 +16,7 @@ import { notFound } from "next/navigation";
 loadWebBlocks();
 registerCustomBlocks();
 registerPageTypes();
+registerFonts();
 
 export const dynamic = "force-static";
 
