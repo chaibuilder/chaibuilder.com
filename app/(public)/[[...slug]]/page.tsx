@@ -1,6 +1,7 @@
 import { registerCustomBlocks } from "@/blocks";
 import { PageScripts } from "@/components/website-settings/page-scripts";
 import "@/data/global";
+import { registerFonts } from "@/fonts";
 import { registerPageTypes } from "@/page-types";
 import {
   ChaiBuilder,
@@ -17,6 +18,7 @@ import { notFound } from "next/navigation";
 loadWebBlocks();
 registerCustomBlocks();
 registerPageTypes();
+registerFonts();
 
 export const dynamic = "force-static";
 
