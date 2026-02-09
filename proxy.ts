@@ -5,7 +5,7 @@ export default function proxy(request: NextRequest) {
     const url = new URL(request.nextUrl.href);
     url.searchParams.delete("r");
     return NextResponse.redirect(
-      `${url.origin}/chai/revalidate?redirect=true&paths=${url.pathname}`,
+      `${url.origin}/api/revalidate?redirect=true&paths=${url.pathname}`,
     );
   }
   return NextResponse.next();
