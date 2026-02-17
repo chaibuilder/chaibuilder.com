@@ -2,13 +2,12 @@
 
 import { getSupabaseClient } from "@/app/supabase-client";
 import { registerCustomBlocks } from "@/blocks";
-import { ChaiWebsiteBuilder } from "@chaibuilder/next";
+import { registerFonts } from "@/fonts";
+import { ChaiWebsiteBuilder, defaultChaiLibrary } from "@chaibuilder/next";
+import { registerChaiLibrary } from "@chaibuilder/next/runtime-client";
 import type { ChaiLoggedInUser } from "@chaibuilder/next/types";
 import { useCallback, useEffect, useState } from "react";
 import { LoginScreen } from "./login";
-import { registerChaiLibrary } from "@chaibuilder/next/runtime-client";
-import { defaultChaiLibrary } from "@chaibuilder/next";
-import { registerFonts } from "@/fonts";
 
 registerCustomBlocks();
 registerChaiLibrary("chai-library", defaultChaiLibrary());
@@ -107,7 +106,7 @@ export default function Editor() {
 
   return (
     <ChaiWebsiteBuilder
-      flags={{ dragAndDrop: true }}
+      flags={{ dragAndDrop: true, ai: true }}
       currentUser={user}
       autoSave
       autoSaveActionsCount={5}
