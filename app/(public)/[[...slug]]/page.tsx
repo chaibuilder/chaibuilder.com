@@ -56,7 +56,7 @@ export default async function Page({
     pageLang: page.lang,
   };
   return (
-    <html className={`smooth-scroll`} lang={page.lang}>
+    <html className={`scroll-smooth`} lang={page.lang}>
       <head>
         <ChaiPageStyles page={page} />
       </head>
