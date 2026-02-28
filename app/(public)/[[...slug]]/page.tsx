@@ -1,4 +1,5 @@
 import { registerCustomBlocks } from "@/blocks";
+import { ImageBlock } from "@/blocks/image";
 import { PageScripts } from "@/components/website-settings/page-scripts";
 import "@/data/global";
 import { registerFonts } from "@/fonts";
@@ -62,7 +63,11 @@ export default async function Page({
       </head>
       <body className={`antialiased`}>
         <PreviewBanner slug={slug} show={isEnabled} />
-        <RenderChaiBlocks page={page} pageProps={pageProps} />
+        <RenderChaiBlocks
+          page={page}
+          pageProps={pageProps}
+          imageComponent={ImageBlock}
+        />
         <PageScripts />
       </body>
     </html>
