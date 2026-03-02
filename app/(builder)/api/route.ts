@@ -3,13 +3,12 @@ import "@/data/global";
 import { registerPageTypes } from "@/page-types";
 import {
   ChaiActionsRegistry,
-  initChaiBuilderActionHandler,
+  initChaiBuilderNextJSActionHandler,
 } from "@chaibuilder/next/actions";
 import {
   SupabaseAuthActions,
   SupabaseStorageActions,
 } from "@chaibuilder/next/actions/supabase";
-import { revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 registerPageTypes();
@@ -31,72 +30,31 @@ export async function POST(req: NextRequest) {
   try {
     // Get authorization header
     const authorization = req.headers.get("authorization") || "";
-    let authTokenOrUserId: string = "";
-    authTokenOrUserId = authorization ? authorization.split(" ")[1] : "";
+    let authToken: string = "";
+    authToken = authorization ? authorization.split(" ")[1] : "";
 
     // Parse request body
     const body = await req.json();
 
     // Supabase authentication check
     const supabase = getSupabaseAdmin();
-    const supabaseUser = await supabase.auth.getUser(authTokenOrUserId);
+    const supabaseUser = await supabase.auth.getUser(authToken);
     if (supabaseUser.error) {
       return NextResponse.json(
         { error: "Invalid or expired token" },
         { status: 401 },
       );
     }
-    authTokenOrUserId = supabaseUser.data.user?.id || "";
-
-    const handleAction = initChaiBuilderActionHandler({
+    const userId = supabaseUser.data.user?.id || "";
+    const actionHandler = initChaiBuilderNextJSActionHandler({
       apiKey,
-      userId: authTokenOrUserId,
+      userId,
     });
-    const response = await handleAction(body);
-    if (response && "tags" in response && Array.isArray(response.tags)) {
-      response.tags.forEach((tag: string) => {
-        revalidateTag(tag, "max");
-      });
-    }
-
-    // Handle streaming responses
-    if (response?._streamingResponse && response?._streamResult) {
-      const result = response._streamResult;
-
-      if (!result?.textStream) {
-        return NextResponse.json(
-          { error: "No streaming response available" },
-          { status: 500 },
-        );
-      }
-
-      // Create a ReadableStream for streaming response
-      const stream = new ReadableStream({
-        async start(controller) {
-          const encoder = new TextEncoder();
-          try {
-            for await (const chunk of result.textStream) {
-              if (chunk) {
-                controller.enqueue(encoder.encode(chunk));
-              }
-            }
-            controller.close();
-          } catch (error) {
-            controller.error(error);
-          }
-        },
-      });
-
-      return new Response(stream, {
-        headers: {
-          "Content-Type": "text/plain; charset=utf-8",
-          "Cache-Control": "no-cache",
-        },
-      });
-    }
-
-    return NextResponse.json(response, { status: response.status ?? 200 });
+    return await actionHandler(body);
   } catch (error) {
+    console.error("Error handling POST request", {
+      message: error instanceof Error ? error.message : String(error),
+    });
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },
