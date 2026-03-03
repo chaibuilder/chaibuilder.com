@@ -2,22 +2,23 @@
 
 import { getSupabaseClient } from "@/app/supabase-client";
 import { registerCustomBlocks } from "@/blocks";
+import WebsiteSettings from "@/components/website-settings";
 import { registerFonts } from "@/fonts";
 import { ChaiWebsiteBuilder, defaultChaiLibrary } from "@chaibuilder/next";
 import { registerChaiLibrary } from "@chaibuilder/next/runtime-client";
 import type { ChaiLoggedInUser } from "@chaibuilder/next/types";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { LoginScreen } from "./login";
 
 registerCustomBlocks();
 registerChaiLibrary("chai-library", defaultChaiLibrary());
 registerFonts();
-
 const supabase = getSupabaseClient();
 
 export default function Editor() {
   const [isLoggedIn, setIsLoggedIn] = useState<null | boolean>(null);
   const [user, setUser] = useState<ChaiLoggedInUser | null>(null);
+  const websiteSettings = useMemo(() => <WebsiteSettings />, []);
   useEffect(() => {
     // Check initial session
     const checkInitialSession = async () => {
@@ -116,6 +117,7 @@ export default function Editor() {
       getLiveUrl={getLiveUrl}
       websocket={supabase}
       onLogout={handleLogout}
+      topLeftCorner={() => websiteSettings}
     />
   );
 }
