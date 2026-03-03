@@ -1,7 +1,7 @@
+import { loadSiteGlobalData } from "@/app/global";
 import { registerCustomBlocks } from "@/blocks";
 import { ImageBlock } from "@/blocks/image";
 import { PageScripts } from "@/components/website-settings/page-scripts";
-import "@/data/global";
 import { registerFonts } from "@/fonts";
 import { registerPageTypes } from "@/page-types";
 import {
@@ -10,6 +10,7 @@ import {
   PreviewBanner,
   RenderChaiBlocks,
 } from "@chaibuilder/next/render";
+import { registerChaiGlobalDataProvider } from "@chaibuilder/next/runtime";
 import { ChaiPageProps } from "@chaibuilder/next/types";
 import { loadWebBlocks } from "@chaibuilder/next/web-blocks";
 import { draftMode } from "next/headers";
@@ -19,6 +20,7 @@ loadWebBlocks();
 registerCustomBlocks();
 registerPageTypes();
 registerFonts();
+registerChaiGlobalDataProvider(loadSiteGlobalData);
 
 export const dynamic = "force-static";
 

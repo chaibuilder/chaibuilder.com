@@ -1,5 +1,4 @@
 import { getSupabaseAdmin } from "@/app/supabase-admin";
-import "@/data/global";
 import { registerPageTypes } from "@/page-types";
 import {
   ChaiActionsRegistry,
