@@ -3,10 +3,14 @@
 import { getSupabaseClient } from "@/app/supabase-client";
 import { registerCustomBlocks } from "@/blocks";
 import { registerFonts } from "@/fonts";
-import { ChaiWebsiteBuilder, defaultChaiLibrary } from "@chaibuilder/next";
+import {
+  ChaiWebsiteBuilder,
+  createRealtimeAdapter,
+  defaultChaiLibrary,
+} from "@chaibuilder/next";
 import { registerChaiLibrary } from "@chaibuilder/next/runtime-client";
 import type { ChaiLoggedInUser } from "@chaibuilder/next/types";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { LoginScreen } from "./login";
 
 registerCustomBlocks();
@@ -96,6 +100,11 @@ export default function Editor() {
     [],
   );
 
+  const realtimeAdapter = useMemo(
+    () => (supabase ? createRealtimeAdapter(supabase.realtime) : undefined),
+    [supabase],
+  );
+
   if (isLoggedIn === null) {
     return null;
   }
@@ -114,7 +123,6 @@ export default function Editor() {
       apiUrl="api"
       getPreviewUrl={getPreviewUrl}
       getLiveUrl={getLiveUrl}
-      websocket={supabase}
       onLogout={handleLogout}
     />
   );
