@@ -1,4 +1,4 @@
-import { registerChaiGlobalDataProvider } from "@chaibuilder/next/runtime";
+import { registerChaiGlobalDataProvider } from "@chaibuilder/pro/runtime";
 
 /**
  * Global data provider for the application.

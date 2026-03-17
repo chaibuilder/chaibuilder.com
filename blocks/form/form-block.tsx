@@ -1,8 +1,8 @@
 import { FileTextIcon } from "@radix-ui/react-icons";
 import * as React from "react";
 import FormComponent from "./form-component";
-import { ChaiBlockComponentProps } from "@chaibuilder/next/types";
-import { registerChaiBlockProps, stylesProp } from "@chaibuilder/next/runtime";
+import { ChaiBlockComponentProps } from "@chaibuilder/pro/types";
+import { registerChaiBlockProps, stylesProp } from "@chaibuilder/pro/runtime";
 
 type ChaiStyles = Record<string, string>;
 

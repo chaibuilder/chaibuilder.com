@@ -1,4 +1,4 @@
-import { registerChaiBlock } from "@chaibuilder/next/runtime";
+import { registerChaiBlock } from "@chaibuilder/pro/runtime";
 import dynamic from "next/dynamic";
 import { HelloWorldBlock } from "./hello-world";
 import { FormConfig } from "./form/form-block";

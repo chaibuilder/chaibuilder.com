@@ -4,17 +4,19 @@ import { registerPageTypes } from "@/page-types";
 import {
   ChaiActionsRegistry,
   initChaiBuilderNextJSActionHandler,
-} from "@chaibuilder/next/actions";
+} from "@chaibuilder/pro/actions";
 import {
   SupabaseAuthActions,
   SupabaseStorageActions,
-} from "@chaibuilder/next/actions/supabase";
+} from "@chaibuilder/pro/supabase/actions";
 import { NextRequest, NextResponse } from "next/server";
 
 registerPageTypes();
 
 const supabase = getSupabaseAdmin();
+//@ts-ignore
 ChaiActionsRegistry.registerActions(SupabaseAuthActions(supabase));
+//@ts-ignore
 ChaiActionsRegistry.registerActions(SupabaseStorageActions(supabase));
 
 export async function POST(req: NextRequest) {

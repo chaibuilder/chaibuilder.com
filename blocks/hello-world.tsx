@@ -1,9 +1,9 @@
-import { registerChaiBlockProps, stylesProp } from "@chaibuilder/next/runtime";
+import { registerChaiBlockProps, stylesProp } from "@chaibuilder/pro/runtime";
 import {
   ChaiBlockComponentProps,
   ChaiBlockConfig,
   ChaiStyles,
-} from "@chaibuilder/next/types";
+} from "@chaibuilder/pro/types";
 
 type Props = {
   name: string;

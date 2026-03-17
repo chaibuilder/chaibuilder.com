@@ -1,4 +1,4 @@
-import { ChaiPageProps, ChaiPageType } from "@chaibuilder/next/types";
+import { ChaiPageProps, ChaiPageType } from "@chaibuilder/pro/types";
 
 export const BlogPageType: ChaiPageType = {
   key: "blog",

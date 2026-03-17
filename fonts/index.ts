@@ -1,4 +1,4 @@
-import { registerChaiFont } from "@chaibuilder/next/runtime";
+import { registerChaiFont } from "@chaibuilder/pro/runtime";
 
 export const registerFonts = () => {
   registerChaiFont("Roboto", {

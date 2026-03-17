@@ -1,6 +1,6 @@
 "use server";
 
-import { db, safeQuery, schema } from "@chaibuilder/next/actions";
+import { db, safeQuery, schema } from "@chaibuilder/pro/actions";
 
 type JsonValue =
   | string

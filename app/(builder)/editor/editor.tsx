@@ -7,9 +7,9 @@ import {
   ChaiWebsiteBuilder,
   createRealtimeAdapter,
   defaultChaiLibrary,
-} from "@chaibuilder/next";
-import { registerChaiLibrary } from "@chaibuilder/next/runtime-client";
-import type { ChaiLoggedInUser } from "@chaibuilder/next/types";
+  registerChaiLibrary,
+} from "@chaibuilder/pro";
+import type { ChaiLoggedInUser } from "@chaibuilder/pro/types";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { LoginScreen } from "./login";
 
@@ -101,6 +101,7 @@ export default function Editor() {
   );
 
   const realtimeAdapter = useMemo(
+    //@ts-ignore
     () => (supabase ? createRealtimeAdapter(supabase.realtime) : undefined),
     [supabase],
   );

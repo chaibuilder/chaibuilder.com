@@ -1,4 +1,4 @@
-import "@chaibuilder/next/styles";
+import "@chaibuilder/pro/styles";
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 

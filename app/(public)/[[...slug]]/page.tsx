@@ -9,9 +9,9 @@ import {
   ChaiPageStyles,
   PreviewBanner,
   RenderChaiBlocks,
-} from "@chaibuilder/next/render";
-import { ChaiPageProps } from "@chaibuilder/next/types";
-import { loadWebBlocks } from "@chaibuilder/next/web-blocks";
+} from "@chaibuilder/pro/render";
+import { ChaiPageProps } from "@chaibuilder/pro/types";
+import { loadWebBlocks } from "@chaibuilder/pro/web-blocks";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
