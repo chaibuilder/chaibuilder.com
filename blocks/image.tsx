@@ -1,5 +1,5 @@
 import { IMAGE_DOMAINS } from "@/remote-pattern";
-import { ChaiBlockComponentProps, ChaiStyles } from "@chaibuilder/sdk/types";
+import { ChaiBlockComponentProps, ChaiStyles } from "@chaibuilder/pro/types";
 import { first, isArray } from "lodash";
 import Image from "next/image";
 import * as React from "react";
