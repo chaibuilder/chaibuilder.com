@@ -3,13 +3,13 @@
   "version": "0.1.4",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"npx chai-tailwind --config ./tailwind.config.js --watch\" \"next dev --port 3000\"",
-    "build": "npx chai-tailwind --config ./tailwind.config.js && next build",
+    "dev": "concurrently \"npx tailwindcss -c ./tailwind.config.js -i './app/(public)/public.css' -o ./public/chaistyles.css --watch\" \"next dev --port 3000\"",
+    "build": "npx tailwindcss -c ./tailwind.config.js -i './app/(public)/public.css' -o ./public/chaistyles.css --minify && next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
-    "@chaibuilder/pro": "^0.0.1-beta.8",
+    "@chaibuilder/pro": "file:../pro/pro/pro",
     "@next/third-parties": "^16.0.10",
     "@radix-ui/react-icons": "^1.3.2",
     "@supabase/supabase-js": "^2.90.1",
