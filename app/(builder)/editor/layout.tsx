@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./builder.css";
+import "@chaibuilder/pro/styles"
 
 const geist = Geist({ subsets: ["latin"] });
 
