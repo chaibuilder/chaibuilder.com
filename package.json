@@ -9,7 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@chaibuilder/pro": "file:../chaibuilder-pro/pro",
+    "@chaibuilder/pro": "^0.0.1-beta.8",
     "@next/third-parties": "^16.0.10",
     "@radix-ui/react-icons": "^1.3.2",
     "@supabase/supabase-js": "^2.90.1",
