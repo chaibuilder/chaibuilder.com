@@ -1,12 +1,7 @@
 import type { NextConfig } from "next";
-import path from "path";
 import { IMAGE_DOMAINS } from "./remote-pattern";
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ["@chaibuilder/pro"],
-  turbopack: {
-    root: path.resolve(__dirname, ".."),
-  },
   images: {
     //NOTE: Update this list as needed
     remotePatterns: [...IMAGE_DOMAINS.map((domain) => ({ hostname: domain }))],
