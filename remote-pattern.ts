@@ -8,4 +8,5 @@ export const IMAGE_DOMAINS = [
   "fakeimg.pl",
   "via.placeholder.com",
   "fldwljgzcktqnysdkxnn.supabase.co",
+  "tsudpsotygrakdaqaals.supabase.co",
 ];
