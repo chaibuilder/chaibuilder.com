@@ -4,6 +4,8 @@ import containerQueries from "@tailwindcss/container-queries";
 import forms from "@tailwindcss/forms";
 import typography from "@tailwindcss/typography";
 
+const chaiTheme = getChaiBuilderTheme();
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -16,7 +18,11 @@ module.exports = {
   ],
   theme: {
     extend: {
-      ...getChaiBuilderTheme(),
+      ...chaiTheme,
+      colors: {
+        ...chaiTheme.colors,
+        surface: "hsl(var(--surface))",
+      },
     },
   },
   plugins: [
