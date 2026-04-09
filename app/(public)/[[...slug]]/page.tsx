@@ -12,6 +12,7 @@ import {
 } from "@chaibuilder/pro/render";
 import { ChaiPageProps } from "@chaibuilder/pro/types";
 import { loadWebBlocks } from "@chaibuilder/pro/web-blocks";
+import { Analytics } from "@vercel/analytics/next";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
@@ -69,6 +70,7 @@ export default async function Page({
           imageComponent={ImageBlock}
         />
         <PageScripts />
+        <Analytics />
       </body>
     </html>
   );
