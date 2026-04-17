@@ -19,6 +19,57 @@ registerFonts();
 
 const supabase = getSupabaseClient();
 
+const injectSiteContext = (data: unknown) => {
+  const siteContextData: Record<string, unknown> = {
+    address: "Pune, India",
+    email: "support@chaibuilder.com",
+    socialLinks: {
+      x: "https://x.com/chaibuilder",
+      youtube: "https://youtube.com/@chaibuilder",
+      discord: "https://discord.gg/chaibuilder",
+    },
+    siteName: "ChaiBuilder",
+    siteTagline: "React & Next.js Website Builder, Open Source",
+  };
+  const clonedData = JSON.parse(JSON.stringify(data));
+
+  if (!clonedData.context) {
+    clonedData.context = {};
+  }
+  if (!clonedData.context.site) {
+    clonedData.context.site = {};
+  }
+
+  const existingContext = clonedData.context.site.siteContext || "";
+  const existingLines = existingContext
+    .split("\n")
+    .filter((line: string) => line.trim());
+
+  const newLines = Object.entries(siteContextData).map(([key, value]) => {
+    if (typeof value === "object" && value !== null) {
+      return `${key}: ${JSON.stringify(value)}`;
+    }
+    return `${key}: ${value}`;
+  });
+
+  const uniqueLines = [...existingLines];
+  newLines.forEach((newLine) => {
+    const key = newLine.split(":")[0];
+    const existingIndex = uniqueLines.findIndex((line) =>
+      line.startsWith(`${key}:`),
+    );
+    if (existingIndex !== -1) {
+      uniqueLines[existingIndex] = newLine;
+    } else {
+      uniqueLines.push(newLine);
+    }
+  });
+
+  clonedData.context.site.siteContext = uniqueLines.join("\n");
+
+  return clonedData;
+};
+
 export default function Editor() {
   const [isLoggedIn, setIsLoggedIn] = useState<null | boolean>(null);
   const [user, setUser] = useState<ChaiLoggedInUser | null>(null);
@@ -101,9 +152,21 @@ export default function Editor() {
   );
 
   const realtimeAdapter = useMemo(
-    //@ts-ignore
     () => (supabase ? createRealtimeAdapter(supabase.realtime) : undefined),
-    [supabase],
+    [],
+  );
+
+  const injectExtraSiteData = useCallback(
+    (request: { data: unknown; action: string }) => {
+      if (!["ASK_AI", "GENERATE_SEO_FIELD"].includes(request.action)) {
+        return request;
+      }
+      return {
+        ...request,
+        data: injectSiteContext(request.data),
+      };
+    },
+    [],
   );
 
   if (isLoggedIn === null) {
@@ -117,6 +180,7 @@ export default function Editor() {
   return (
     <ChaiWebsiteBuilder
       flags={{ dragAndDrop: true, ai: true }}
+      beforeRequest={injectExtraSiteData}
       currentUser={user}
       autoSave
       autoSaveActionsCount={5}
@@ -125,6 +189,7 @@ export default function Editor() {
       getPreviewUrl={getPreviewUrl}
       getLiveUrl={getLiveUrl}
       onLogout={handleLogout}
+      realtimeAdapter={realtimeAdapter}
     />
   );
 }
