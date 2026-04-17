@@ -26,7 +26,8 @@ const injectSiteContext = (data: unknown) => {
     socialLinks: {
       x: "https://x.com/chaibuilder",
       youtube: "https://youtube.com/@chaibuilder",
-      discord: "https://discord.gg/chaibuilder",
+      discord: "https://discord.com/invite/czkgwX2rnD",
+      github: "https://github.com/chaibuilder",
     },
     siteName: "ChaiBuilder",
     siteTagline: "React & Next.js Website Builder, Open Source",
