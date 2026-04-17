@@ -5,12 +5,11 @@ import { registerCustomBlocks } from "@/blocks";
 import { registerFonts } from "@/fonts";
 import {
   ChaiWebsiteBuilder,
-  createRealtimeAdapter,
   defaultChaiLibrary,
   registerChaiLibrary,
 } from "@chaibuilder/pro";
 import type { ChaiLoggedInUser } from "@chaibuilder/pro/types";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { LoginScreen } from "./login";
 
 registerCustomBlocks();
@@ -151,12 +150,6 @@ export default function Editor() {
     (slug: string) => `/api/preview?disable=true&slug=${slug}`,
     [],
   );
-
-  const realtimeAdapter = useMemo(
-    () => (supabase ? createRealtimeAdapter(supabase.realtime) : undefined),
-    [],
-  );
-
   const injectExtraSiteData = useCallback(
     (request: { data: unknown; action: string }) => {
       if (!["ASK_AI", "GENERATE_SEO_FIELD"].includes(request.action)) {
@@ -190,7 +183,6 @@ export default function Editor() {
       getPreviewUrl={getPreviewUrl}
       getLiveUrl={getLiveUrl}
       onLogout={handleLogout}
-      realtimeAdapter={realtimeAdapter}
     />
   );
 }
