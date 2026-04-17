@@ -9,7 +9,7 @@ import {
   registerChaiLibrary,
 } from "@chaibuilder/pro";
 import type { ChaiLoggedInUser } from "@chaibuilder/pro/types";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { LoginScreen } from "./login";
 
 registerCustomBlocks();
@@ -163,6 +163,58 @@ export default function Editor() {
     [],
   );
 
+  const damProps = useMemo(() => {
+    return {
+      searchImages: {
+        providers: [
+          {
+            id: "pexels",
+            filters: {
+              orientation: ["default", "landscape", "portrait", "square"],
+              size: ["default", "large ", "medium", "small"],
+              color: [
+                "default",
+                "red",
+                "orange",
+                "yellow",
+                "green",
+                "turquoise",
+                "blue",
+                "violet",
+                "pink",
+                "brown",
+                "black",
+                "gray",
+                "white",
+              ],
+            },
+          },
+          {
+            id: "unsplash",
+            filters: {
+              orientation: ["default", "landscape", "portrait", "squarish"],
+              color: [
+                "default",
+                "black_and_white",
+                "black",
+                "white",
+                "yellow",
+                "orange",
+                "red",
+                "purple",
+                "magenta",
+                "green",
+                "teal",
+                "blue",
+              ],
+              order_by: ["default", "relevant", "latest"],
+            },
+          },
+        ],
+      },
+    };
+  }, []);
+
   if (isLoggedIn === null) {
     return null;
   }
@@ -173,7 +225,7 @@ export default function Editor() {
 
   return (
     <ChaiWebsiteBuilder
-      flags={{ dragAndDrop: true, ai: true }}
+      flags={{ dragAndDrop: true, ai: true, dam: { searchImages: true } }}
       beforeRequest={injectExtraSiteData}
       currentUser={user}
       autoSave
@@ -183,6 +235,7 @@ export default function Editor() {
       getPreviewUrl={getPreviewUrl}
       getLiveUrl={getLiveUrl}
       onLogout={handleLogout}
+      dam={damProps}
     />
   );
 }
