@@ -223,14 +223,14 @@ export function HeroVideoDialog({
               {...selectedAnimation}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
               className="relative mx-4 aspect-video w-full max-w-4xl md:mx-0">
-              <motion.button className="absolute -top-16 right-0 rounded-full bg-background/50 p-2 text-xl text-foreground ring-1 backdrop-blur-md">
+              <motion.button className="absolute -top-4 -right-4 z-10 rounded-full bg-background p-2 text-xl text-foreground ring-1 backdrop-blur-md">
                 <XIcon className="size-5" />
               </motion.button>
-              <div className="relative isolate z-[1] size-full overflow-hidden rounded-md border-2 border-border">
+              <div className="relative aspect-video isolate z-[1] size-full overflow-hidden rounded-md border-2 border-border/30">
                 <iframe
                   src={embedUrl}
                   title="Hero Video player"
-                  className="size-full rounded-md"
+                  className="h-full w-full rounded-md"
                   allowFullScreen
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
               </div>

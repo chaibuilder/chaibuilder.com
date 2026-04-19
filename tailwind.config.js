@@ -1,5 +1,4 @@
 import { chaiBuilderPlugin, getChaiBuilderTheme } from "@chaibuilder/pro/utils";
-import aspectRatio from "@tailwindcss/aspect-ratio";
 import containerQueries from "@tailwindcss/container-queries";
 import forms from "@tailwindcss/forms";
 import typography from "@tailwindcss/typography";
@@ -12,6 +11,7 @@ module.exports = {
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
+    "./blocks/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
     "./node_modules/@chaibuilder/pro/dist/**/*.{js,cjs}",
@@ -25,11 +25,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    chaiBuilderPlugin,
-    aspectRatio,
-    containerQueries,
-    forms,
-    typography,
-  ],
+  plugins: [chaiBuilderPlugin, containerQueries, forms, typography],
 };

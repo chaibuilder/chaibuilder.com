@@ -2,6 +2,7 @@ export const IMAGE_DOMAINS = [
   "ssqrncwtxjiyqszkfluw.supabase.co",
   "ucarecdn.com",
   "placehold.co",
+  "img.youtube.com",
   "img.shields.io",
   "cdn.rareblocks.xyz",
   "picsum.photos",
