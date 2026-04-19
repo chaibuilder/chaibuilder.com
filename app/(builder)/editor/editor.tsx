@@ -232,6 +232,7 @@ export default function Editor() {
       getPreviewUrl={getPreviewUrl}
       getLiveUrl={getLiveUrl}
       onLogout={handleLogout}
+      // @ts-expect-error - dam props type is not compatible with ChaiWebsiteBuilder
       dam={damProps}
     />
   );
