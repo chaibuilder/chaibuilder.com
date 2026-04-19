@@ -10,7 +10,7 @@ import {
   PreviewBanner,
   RenderChaiBlocks,
 } from "@chaibuilder/pro/render";
-import { ChaiPageProps } from "@chaibuilder/pro/types";
+import { ChaiPage, ChaiPageProps } from "@chaibuilder/pro/types";
 import { loadWebBlocks } from "@chaibuilder/pro/web-blocks";
 import { Analytics } from "@vercel/analytics/next";
 import { draftMode } from "next/headers";
@@ -49,7 +49,7 @@ export default async function Page({
     return notFound();
   }
 
-  const page = response as any;
+  const page = response as ChaiPage & { fallbackLang: string };
   //NOTE: pageProps are received in your dataProvider functions for block and page
   const pageProps: ChaiPageProps = {
     slug,

@@ -14,9 +14,7 @@ import { NextRequest, NextResponse } from "next/server";
 registerPageTypes();
 
 const supabase = getSupabaseAdmin();
-//@ts-ignore
 ChaiActionsRegistry.registerActions(SupabaseAuthActions(supabase));
-//@ts-ignore
 ChaiActionsRegistry.registerActions(SupabaseStorageActions(supabase));
 
 export async function POST(req: NextRequest) {

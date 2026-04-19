@@ -1,13 +1,13 @@
 import { registerChaiBlock } from "@chaibuilder/pro/runtime";
 import dynamic from "next/dynamic";
-import { HelloWorldBlock } from "./hello-world";
 import { FormConfig } from "./form/form-block";
+import { HeroVideoDialogConfig } from "./hero-video-dialog";
 
 //Important: Dynamic import is required for custom blocks
-const HelloWorld = dynamic(() => import("./hello-world"));
 const ChaiForm = dynamic(() => import("./form/form-block"));
+const HeroVideoDialogBlock = dynamic(() => import("./hero-video-dialog"));
 
 export const registerCustomBlocks = () => {
-  registerChaiBlock(HelloWorld, HelloWorldBlock);
   registerChaiBlock(ChaiForm, FormConfig);
+  registerChaiBlock(HeroVideoDialogBlock, HeroVideoDialogConfig);
 };

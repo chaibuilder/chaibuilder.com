@@ -123,17 +123,14 @@ export default function Editor() {
     };
   }, [user?.id]);
 
-  const handleLogout = useCallback(
-    async (reason?: string) => {
-      await supabase.auth.signOut();
-      if (reason) {
-        window.location.href = `/editor?${reason.toLowerCase()}=true`;
-      } else {
-        window.location.reload();
-      }
-    },
-    [supabase],
-  );
+  const handleLogout = useCallback(async (reason?: string) => {
+    await supabase.auth.signOut();
+    if (reason) {
+      window.location.href = `/editor?${reason.toLowerCase()}=true`;
+    } else {
+      window.location.reload();
+    }
+  }, []);
 
   const getAccessToken = useCallback(async () => {
     const {

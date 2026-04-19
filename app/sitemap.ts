@@ -12,7 +12,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return (
     pages?.map((page) => {
-      const item: any = { url: `${host}${page.slug}` };
+      const item: MetadataRoute.Sitemap[number] = {
+        url: `${host}${page.slug}`,
+      };
       if (page.lastSaved) item.lastModified = new Date(page.lastSaved);
       return item;
     }) || []
