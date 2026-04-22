@@ -1,6 +1,8 @@
 import { MetadataRoute } from "next";
 import { getSupabaseAdmin } from "./supabase-admin";
 
+export const revalidate = 3600; // Revalidate every hour (in seconds)
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const host = "https://chaibuilder.com";
   const supabase = await getSupabaseAdmin();
