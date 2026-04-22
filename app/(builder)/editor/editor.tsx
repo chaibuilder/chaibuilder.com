@@ -10,6 +10,7 @@ import {
 } from "@chaibuilder/pro";
 import type { ChaiLoggedInUser } from "@chaibuilder/pro/types";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import "react-diff-view/style/index.css";
 import { LoginScreen } from "./login";
 
 registerCustomBlocks();
