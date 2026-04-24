@@ -223,7 +223,11 @@ export default function Editor() {
 
   return (
     <ChaiWebsiteBuilder
-      flags={{ dragAndDrop: true, ai: true, dam: { searchImages: true } }}
+      flags={{
+        dragAndDrop: true,
+        ai: true,
+        dam: { searchImages: true, genAI: true },
+      }}
       beforeRequest={injectExtraSiteData}
       currentUser={user}
       autoSave
