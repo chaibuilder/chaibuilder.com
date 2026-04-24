@@ -1,8 +1,9 @@
 "use server";
 
 import { db, safeQuery, schema } from "@chaibuilder/pro/actions";
+import { notifySiteOwnerOfFormSubmission } from "./mail/form-submission";
 
-type JsonValue =
+export type JsonValue =
   | string
   | number
   | boolean
@@ -24,7 +25,10 @@ export async function formSubmit(data: FormSubmissionData) {
       return { success: false };
     }
 
-    const { formData, additionalData = {} } = data;
+    const { formData, additionalData = {} } = data as {
+      formData: Record<string, JsonValue>;
+      additionalData: Record<string, JsonValue>;
+    };
 
     const formName = (additionalData.formName as string) || "contact";
     const pageUrl = (additionalData.pageUrl as string) || "";
@@ -37,8 +41,8 @@ export async function formSubmit(data: FormSubmissionData) {
     const formSubmission = {
       app: appKey,
       formName,
-      formData: formData as Record<string, unknown>,
-      additionalData: additionalData as Record<string, unknown>,
+      formData,
+      additionalData,
       pageUrl,
     };
 
@@ -50,6 +54,12 @@ export async function formSubmit(data: FormSubmissionData) {
       console.error("Form submission error:", error);
       return { success: false };
     }
+
+    await notifySiteOwnerOfFormSubmission(
+      "chaibuilder.com",
+      formData,
+      additionalData,
+    );
 
     return { success: true };
   } catch (error) {
