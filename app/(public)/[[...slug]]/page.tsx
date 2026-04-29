@@ -1,6 +1,5 @@
 import { registerCustomBlocks } from "@/blocks";
 import { ImageBlock } from "@/blocks/image";
-import { PageScripts } from "@/components/website-settings/page-scripts";
 import "@/data/global";
 import { registerFonts } from "@/fonts";
 import { registerPageTypes } from "@/page-types";
@@ -12,7 +11,6 @@ import {
 } from "@chaibuilder/pro/render";
 import { ChaiPage, ChaiPageProps } from "@chaibuilder/pro/types";
 import { loadWebBlocks } from "@chaibuilder/pro/web-blocks";
-import { Analytics } from "@vercel/analytics/next";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 
@@ -58,20 +56,14 @@ export default async function Page({
     pageLang: page.lang,
   };
   return (
-    <html className={`scroll-smooth`} lang={page.lang}>
-      <head>
-        <ChaiPageStyles page={page} />
-      </head>
-      <body className={`antialiased`}>
-        <PreviewBanner slug={slug} show={isEnabled} />
-        <RenderChaiBlocks
-          page={page}
-          pageProps={pageProps}
-          imageComponent={ImageBlock}
-        />
-        <PageScripts />
-        <Analytics />
-      </body>
-    </html>
+    <>
+      <ChaiPageStyles page={page} />
+      <PreviewBanner slug={slug} show={isEnabled} />
+      <RenderChaiBlocks
+        page={page}
+        pageProps={pageProps}
+        imageComponent={ImageBlock}
+      />
+    </>
   );
 }
