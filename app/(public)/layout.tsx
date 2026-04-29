@@ -1,5 +1,3 @@
-import { PageScripts } from "@/components/website-settings/page-scripts";
-import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import "./public.css";
 
@@ -13,13 +11,5 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html className={`scroll-smooth`} lang="en">
-      <body className={`antialiased`}>
-        {children}
-        <PageScripts />
-        <Analytics />
-      </body>
-    </html>
-  );
+  return children;
 }
