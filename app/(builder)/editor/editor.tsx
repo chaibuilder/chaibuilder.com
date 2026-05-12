@@ -3,8 +3,11 @@
 import { getSupabaseClient } from "@/app/supabase-client";
 import { registerCustomBlocks } from "@/blocks";
 import { registerFonts } from "@/fonts";
-import { ChaiWebsiteBuilder, defaultChaiLibrary } from "@chaibuilder/pro";
-import { registerChaiLibrary } from "@chaibuilder/pro/runtime/client";
+import {
+  ChaiWebsiteBuilder,
+  defaultChaiLibrary,
+  registerChaiLibrary,
+} from "@chaibuilder/pro";
 import type { ChaiLoggedInUser } from "@chaibuilder/pro/types";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import "react-diff-view/style/index.css";

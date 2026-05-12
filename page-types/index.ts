@@ -1,4 +1,4 @@
-import { registerChaiPageType } from "@chaibuilder/pro/runtime";
+import { registerChaiPageType } from "@chaibuilder/pro/server";
 import { BlogPageType } from "./blog";
 
 export const registerPageTypes = () => {

@@ -5,12 +5,11 @@ import "@/data/global";
 import { registerFonts } from "@/fonts";
 import { registerPageTypes } from "@/page-types";
 import {
-  ChaiBuilder,
   ChaiPageStyles,
   PreviewBanner,
   RenderChaiBlocks,
 } from "@chaibuilder/pro/render";
-import { ChaiPage, ChaiPageProps } from "@chaibuilder/pro/types";
+import { ChaiBuilder } from "@chaibuilder/pro/api";
 import { loadWebBlocks } from "@chaibuilder/pro/web-blocks";
 import { Analytics } from "@vercel/analytics/next";
 import { draftMode } from "next/headers";
@@ -31,7 +30,9 @@ export const generateMetadata = async (props: {
 
   const { isEnabled } = await draftMode();
   ChaiBuilder.init(process.env.CHAIBUILDER_APP_KEY!, isEnabled);
-  return await ChaiBuilder.getPageSeoData(slug);
+  const { page, settings, pageData } =
+    await ChaiBuilder.getPageMetadataPayload(slug);
+  return ChaiBuilder.generateMetaData({ page, pageData, settings });
 };
 
 export default async function Page({
@@ -49,22 +50,18 @@ export default async function Page({
     return notFound();
   }
 
-  const page = response as ChaiPage & { fallbackLang: string };
-  //NOTE: pageProps are received in your dataProvider functions for block and page
-  const pageProps: ChaiPageProps = {
-    slug,
-    pageType: page.pageType,
-    fallbackLang: page.fallbackLang,
-    pageLang: page.lang,
-  };
+  const { page, settings, pageData, pageProps } =
+    await ChaiBuilder.getPagePayload(slug);
   return (
     <html className={`scroll-smooth`} lang={page.lang}>
       <head>
         <ChaiPageStyles page={page} />
       </head>
       <body className={`antialiased`}>
-        <PreviewBanner slug={slug} show={isEnabled} />
+        <PreviewBanner show={isEnabled} />
         <RenderChaiBlocks
+          pageData={pageData}
+          settings={settings}
           page={page}
           pageProps={pageProps}
           imageComponent={ImageBlock}

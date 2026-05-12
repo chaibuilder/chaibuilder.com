@@ -2,9 +2,9 @@ import { getSupabaseAdmin } from "@/app/supabase-admin";
 import "@/data/global";
 import { registerPageTypes } from "@/page-types";
 import {
-  ChaiActionsRegistry,
-  initChaiBuilderNextJSActionHandler,
-} from "@chaibuilder/pro/actions";
+  BuilderActionsRegistry,
+  createBuilderActionHandler,
+} from "@chaibuilder/pro/server";
 import {
   SupabaseAuthActions,
   SupabaseStorageActions,
@@ -14,8 +14,8 @@ import { NextRequest, NextResponse } from "next/server";
 registerPageTypes();
 
 const supabase = getSupabaseAdmin();
-ChaiActionsRegistry.registerActions(SupabaseAuthActions(supabase));
-ChaiActionsRegistry.registerActions(SupabaseStorageActions(supabase));
+// BuilderActionsRegistry.registerActions(SupabaseAuthActions(supabase));
+// BuilderActionsRegistry.registerActions(SupabaseStorageActions(supabase));
 
 export async function POST(req: NextRequest) {
   const apiKey = process.env.CHAIBUILDER_APP_KEY;
@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
       );
     }
     const userId = supabaseUser.data.user?.id || "";
-    const actionHandler = initChaiBuilderNextJSActionHandler({
+    const actionHandler = createBuilderActionHandler({
       apiKey,
       userId,
     });

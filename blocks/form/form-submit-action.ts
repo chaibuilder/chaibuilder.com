@@ -1,6 +1,6 @@
 "use server";
 
-import { db, safeQuery, schema } from "@chaibuilder/pro/actions";
+import { db, safeQuery, schema } from "@chaibuilder/pro/server";
 import { notifySiteOwnerOfFormSubmission } from "./mail/form-submission";
 
 export type JsonValue =

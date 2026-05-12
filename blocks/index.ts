@@ -1,4 +1,4 @@
-import { registerChaiBlock } from "@chaibuilder/pro/runtime";
+import { registerChaiBlock } from "@chaibuilder/pro/registry";
 import dynamic from "next/dynamic";
 import { FormConfig } from "./form/form-block";
 import { HeroVideoDialogConfig } from "./hero-video-dialog";

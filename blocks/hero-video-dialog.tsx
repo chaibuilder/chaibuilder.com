@@ -1,5 +1,5 @@
 import { HeroVideoDialog } from "@/components/ui/hero-video-dialog";
-import { registerChaiBlockProps, stylesProp } from "@chaibuilder/pro/runtime";
+import { registerChaiBlockProps, stylesProp } from "@chaibuilder/pro/registry";
 import type {
   ChaiBlockComponentProps,
   ChaiStyles,
