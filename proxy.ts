@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+export const runtime = "edge";
+
 export default function proxy(request: NextRequest) {
   if (request.nextUrl.searchParams.has("r")) {
     const url = new URL(request.nextUrl.href);
