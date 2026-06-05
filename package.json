@@ -7,7 +7,9 @@
     "prebuild": "cp .npmrc.vercel .npmrc || true",
     "build": "npx tailwindcss -c ./tailwind.config.js -i './app/(public)/public.css' -o ./public/chaistyles.css --minify && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview"
   },
   "dependencies": {
     "@chaibuilder/pro": "^0.0.1-beta.51",
@@ -26,6 +28,7 @@
     "react-dom": "19.2.3"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.19.11",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.9",
@@ -40,6 +43,7 @@
     "eslint-config-next": "16.1.2",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.19",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.98.0"
   }
 }
