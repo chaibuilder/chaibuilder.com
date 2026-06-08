@@ -8,8 +8,8 @@
     "build": "npx tailwindcss -c ./tailwind.config.js -i './app/(public)/public.css' -o ./public/chaistyles.css --minify && next build",
     "start": "next start",
     "lint": "eslint",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview"
+    "deploy": "vinext deploy",
+    "preview": "vinext deploy"
   },
   "dependencies": {
     "@chaibuilder/pro": "^0.0.1-beta.51",
@@ -24,11 +24,11 @@
     "lodash": "^4.17.23",
     "next": "^16.2.6",
     "postgres": "^3.4.8",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1.19.11",
+    "@cloudflare/vite-plugin": "^1.40.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.9",
@@ -37,13 +37,18 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-rsc": "^0.5.27",
     "autoprefixer": "^10.4.20",
     "concurrently": "^9.2.1",
     "eslint": "^9",
     "eslint-config-next": "16.1.2",
     "postcss": "^8.4.49",
+    "react-server-dom-webpack": "^19.2.7",
     "tailwindcss": "^3.4.19",
     "typescript": "^5",
+    "vinext": "^0.0.55",
+    "vite": "^8.0.16",
     "wrangler": "^4.98.0"
-  }
+  },
+  "type": "module"
 }

@@ -1,7 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "chaibuilder-old",
-  "main": ".open-next/worker.js",
+  "main": "./worker/index.ts",
   "account_id": "a8284f05d1f5378c380c5a7b3082dbd1",
   "compatibility_date": "2026-05-27",
   "compatibility_flags": ["nodejs_compat"],
@@ -9,33 +9,15 @@
   // Static assets served by Cloudflare
   "assets": {
     "binding": "ASSETS",
-    "directory": ".open-next/assets",
+    "directory": "dist/client",
   },
 
-  // R2 bucket for incremental (ISR) cache
-  "r2_buckets": [
+  // vinext uses KV for incremental (ISR) cache
+  "kv_namespaces": [
     {
-      "binding": "NEXT_INC_CACHE_R2_BUCKET",
-      "bucket_name": "chaibuilder-old-cache-bucket",
-    },
-  ],
-
-  // Durable Object for the revalidation queue
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "NEXT_CACHE_DO_QUEUE",
-        "class_name": "DOQueueHandler",
-      },
-    ],
-  },
-
-  // Required migration for the DO SQLite class
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_sqlite_classes": ["DOQueueHandler"],
-    },
+      "binding": "VINEXT_CACHE",
+      "id": "0be22850c7fd4ed3984ca020d03e38c7"
+    }
   ],
 
   // D1 database for tag-based cache invalidation
@@ -51,4 +33,12 @@
   "observability": {
     "enabled": true,
   },
+
+  // Delete obsolete OpenNext Durable Objects
+  "migrations": [
+    {
+      "tag": "v3",
+      "deleted_classes": ["DOQueueHandler"]
+    }
+  ]
 }
