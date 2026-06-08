@@ -13,10 +13,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 registerPageTypes();
 
-const supabase = getSupabaseAdmin();
-ChaiActionsRegistry.registerActions(SupabaseAuthActions(supabase));
-ChaiActionsRegistry.registerActions(SupabaseStorageActions(supabase));
-
 export async function POST(req: NextRequest) {
   const apiKey = process.env.CHAIBUILDER_APP_KEY;
 
@@ -38,6 +34,8 @@ export async function POST(req: NextRequest) {
 
     // Supabase authentication check
     const supabase = getSupabaseAdmin();
+    ChaiActionsRegistry.registerActions(SupabaseAuthActions(supabase));
+    ChaiActionsRegistry.registerActions(SupabaseStorageActions(supabase));
     const supabaseUser = await supabase.auth.getUser(authToken);
     if (supabaseUser.error) {
       return NextResponse.json(
